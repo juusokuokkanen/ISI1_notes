@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Thu Dec 21 14:07:11 EET 2017
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=ISI1_notes.tex
+outputFile=ISI1_notes.pdf
+langSpell=en
+markDer=true
+srcDir=
