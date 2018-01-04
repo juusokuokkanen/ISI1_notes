@@ -52,6 +52,7 @@
 \theoremstyle{definition}
 
 \newtheorem{example}{Example}[chapter]
+\newtheorem{definition}{Definition}[chapter]
 
 %\bibpunct{(}{)}{,}{a}{}{,}
 \bibliographystyle{\foldPath saf}
@@ -92,6 +93,7 @@
 \pagenumbering{arabic}
 
 \chapter{Preliminaries}
+\section{Introduction}
 \begin{itemize}
   \item Field of statistics builds on probability theory
   \begin{quotation}
@@ -101,22 +103,22 @@
   \end{quotation}
   \item The paragraph includes the important ideas of the statistical model:
   \begin{itemize}
-    \item The percentage $\bm p$ = the model of the process or underlying
+    \item The percentage $p$ = the model of the process or underlying
     population
     \item The behavior of individuals = data
   \end{itemize}
-  \item Assuming a constat probability $\bm p$ may be a too simplistic or naive
+  \item Assuming a constat probability $p$ may be a too simplistic or naive
   assuption, and may be replaced by more realistic one where p is a function of
   the propabilities of the individual and the context where s/he is.
   \item We also need to specify a model, for the variability of the
-  individuals around the $\bm p$ to complete the model formulation.
+  individuals around the $p$ to complete the model formulation.
   \begin{itemize}
     \item A crude summary if the variance-covariance matrix of the
     observations.
     \item A complete definition is done by specifying the joint distribution
     of all individuals.
   \end{itemize}
-  \item We also may want to estimate how accurately we finally estimated $\bm p$
+  \item We also may want to estimate how accurately we finally estimated $p$
   writing the available data
   \item The theoretical process that generates the data is called
   \begin{itemize}
@@ -148,4 +150,59 @@
     \item See example R-scipt \verb#regsimu.R#
   \end{itemize}
 \end{itemize}
+\section{Set theory}
+\begin{itemize}
+	\item Consider a statistical experiment (e.g. rolling a dice, measuring the
+	diameter of a tree, tossing a coin, measuring the photosynthetic activity in plant etc.)
+\end{itemize}
+\begin{definition}
+All possible outcomes of a particular experiment (koe) form a set
+(joukko) called sample space (otosavaruus), denoted by S. For example:
+
+% \textbf{Examples} % TODO: Can this be done better?
+\begin{itemize}
+  \item[A] Toss of a coin; $ S = \{H, T\} $
+  \item[B] Reaction time, Waiting time; $ S = [0, \infty) $
+  \item[C] Exercise score of this course; $ S = \{0,1,2,\ldots,210\} $
+  \item[D] Number of points (events) within fixed area; $ S = \{0,1,2,\ldots $
+  \item[E] CO\textsubscript{2} uptake within 0.5 hours in fixed area plot; $ S =
+  (-\infty, \infty) $
+  \item[F] Waiting time up to one hour (in minutes); $ S = [0, 60) $
+\end{itemize}
+
+Sample space can be countable (numeroituva) or uncountable (ylinumeroituva). If
+the elements of a sample space can be put into one-to-one correspondence with a
+finite subset of integers, the space is countable. Otherwise, it is uncountable.
+\end{definition}
+\begin{itemize}
+  \item Note: Examples A and C before are countable, the others are uncountable
+  \item Note: If the waiting time in G are rounded to the
+  minute / second / millisecond / microsecond, the sample space becomes
+  countable.
+\end{itemize}
+\begin{definition}
+An event (tapaus) is any collection of possible outcomes of an experiment,
+meaning it is a subset of S. Event A is said to occur, if the outcome of the experiment is in set A.
+\end{definition}
+\begin{example}
+Draw a card from standard deck.
+$$S = \{ \heartsuit , \diamondsuit , \clubsuit, \spadesuit \}$$
+One possible event is $A = \{ \heartsuit , \diamondsuit\}$.
+Another possible event is $B = \{ \diamondsuit , \clubsuit, \spadesuit \}$. The
+union (unioni) of the two events includes all elements of both
+$$A \cup B = \{ \heartsuit , \diamondsuit , \clubsuit, \spadesuit \}$$
+The intersection (leikkaus) includes elements that are common to both events
+$$A \cap B = \{ \diamondsuit \}$$
+The complement (komplementti) of a set includes al elements of $S$ that are not
+included in $A$
+$$A^c = \{ \clubsuit, \spadesuit \}$$
+Events $A$ and $B$ are said to be disjoint (erillisi\"a), if 
+$$A \cap B = \emptyset$$
+Number of events $A_1$, $A_2$, $A_3$, \ldots are said to be pairwise disjoint,
+if
+$$A_i \cap A_j = \emptyset$$
+for all pairs of i, j. In addition, if $\bigcup_{i=1}^{\infty}A_i = S$,
+then $A_1$, $A_2$, $A_3$, \ldots defines a partition of the sample space.
+
+\end{example}
 \end{document}
