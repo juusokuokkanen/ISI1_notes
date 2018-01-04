@@ -91,9 +91,61 @@
 \mainmatter
 \pagenumbering{arabic}
 
-\chapter{Introduction}
-\section{Statistics: The science of uncertainty}.
+\chapter{Preliminaries}
 \begin{itemize}
-  \item Test
+  \item Field of statistics builds on probability theory
+  \begin{quotation}
+  \textit{``You can, for example, never foretell what any one man will do, but
+  you can say with precision what an average number will be up to. Individuals vary,
+  but percentages remain constant. So says the statistician.''} - Sherlock Holmes
+  \end{quotation}
+  \item The paragraph includes the important ideas of the statistical model:
+  \begin{itemize}
+    \item The percentage $\bm p$ = the model of the process or underlying
+    population
+    \item The behavior of individuals = data
+  \end{itemize}
+  \item Assuming a constat probability $\bm p$ may be a too simplistic or naive
+  assuption, and may be replaced by more realistic one where p is a function of
+  the propabilities of the individual and the context where s/he is.
+  \item We also need to specify a model, for the variability of the
+  individuals around the $\bm p$ to complete the model formulation.
+  \begin{itemize}
+    \item A crude summary if the variance-covariance matrix of the
+    observations.
+    \item A complete definition is done by specifying the joint distribution
+    of all individuals.
+  \end{itemize}
+  \item We also may want to estimate how accurately we finally estimated $\bm p$
+  writing the available data
+  \item The theoretical process that generates the data is called
+  \begin{itemize}
+    \item Statistical model  or (tilastollinen malli)
+    \item Stochastic process  or (statistinen prosessi)
+    \item Random process or (satunnaisprosessi)
+  \end{itemize}
+  \item The process is random/stochastic because the ``man'' do not behave
+  exactly according to model.\footnote{This is what is done on this part of the
+  course (ISI1).}
+  \begin{itemize}
+    \item Probability calculus and the theory of random variables provide
+    tools to formulate and understand such models.
+  \end{itemize}
+  \item Once model has been formulated or specified (muotoiltu), observed data
+  can be used to\footnote{This is what is done on second part of the course
+  (ISI2)}
+  \begin{itemize}
+    \item estimate model parameters
+    \item evaluate the model fit (mallin sopivuus)
+    \item evaluate the inaccuracy related to the estimated model parameters
+  \end{itemize}
+  \item When talking about models, we can talk about
+  \begin{itemize}
+    \item True model (Tosi malli)
+    \item Estimated model (Estimoitu malli)
+    \item True model always stays the same, but as data used to formulate the
+    estimated model gets larger, the estimated model gets closer to true model.
+    \item See example R-scipt \verb#regsimu.R#
+  \end{itemize}
 \end{itemize}
 \end{document}
