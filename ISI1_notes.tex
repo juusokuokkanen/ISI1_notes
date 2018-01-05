@@ -236,6 +236,8 @@ Axioms of probability
 \end{itemize}
 \end{theorem}
 \begin{example}
+%TODO: There were some diagrams related to these examples, that are not yet
+% added. Should they be?
 Assume we have two events $A_1$, $X \in A_1$ and $A_2$, $X \in A_2$, which have
 probabilities $P(A_1) = 0.2$ and $P(A_2) = 0.3$.
 
@@ -270,8 +272,75 @@ $$P(A \cup B) = P(A) + P(B)-P(A \cap B)$$
 $$P(A \cup B) \leq 1$$
 $$P(A) + P(B)-P(A \cap B) \leq 1$$
 $$P(A \cap B) \geq P(A) + P(B)-1$$
-This equation is called the Bonferroni inequality
+This equation is called the Bonferroni inequality. Idea is, that if we have
+intersection of two events ($A$ and $B$), the probability of the intersection
+can be shown to be higher or equal than the right term.
+
+$$P(A \cap B) \geq P(A) + P(B)-1$$
+Supose $A$ and $B$ are two events that occur with probability $P(A) = P(B) =
+0.975$. Then $P(A \cap B) = 0.975 + 0.975 - 1 = 0.95\ldots$ 
+
 
 \label{Theorem2}
 \end{theorem}
+\begin{theorem}
+\begin{itemize}
+  \item[a)] $P(A) = \sum_{i=1}^{\infty} P(A \cap C)$ for any partition
+  $C_1, C_2, \ldots$
+  \item[b)]$P(\bigcup_{i=1}^{\infty}A_i) \leq \sum_{i=1}^{\infty}P(A_i)$, for
+  any sets $A_1, A_2, \ldots$
+\end{itemize}
+\end{theorem}
+\begin{definition}
+IF $A$ and $B$ are events in a sample space $S$ and $P(B) > 0$, then
+conditional probability (ehdollinen todenn\"akoisyys) of $A$ given $B$ is
+$$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$$
+\end{definition}
+\begin{example}
+Clinical trial. Assume  that we know the probabilities that are represented in
+table \ref{probTable1}.
+Let event $A$ be the event ``the patient recovered'' with sample space $S =
+\{ ``OK", ``NOT~OK"\}$, and event B is the event ``The patient was treated
+with placebo'' with $S = \{``YES'', ``NO''\}$.
+
+Now $P(A \cap B)$ can be computed directly using the table \ref{probTable1}, and
+it is
+$$P(A \mid B) = P(``OK'' \mid ``Placebo'') = \frac{P(A \cap B)}{P(B)} =
+\frac{0.160}{0.227} \approx 0.70$$
+
+\begin{table}
+\caption{Probabilities related to clinical trial. Four different drugs and the
+probabilities that patient got or did not got ok after using it.}
+\label{probTable1}
+\begin{tabular}{| r | r | r | r | r | r |}
+\hline
+{ } & Drug1 & Drug2 & Drug3 & Placebo & Total \\
+\hline
+OK & 0.120 & 0.087 & 0.147 & 0.160 & 0.513 \\
+\hline
+{NOT OK} & 0.147 & 0.167 & 0.107 & 0.067 & 0.487 \\
+\hline
+Total & 0.267 & 0.253 & 0.253 & 0.227 & 1.000 \\
+\hline
+\end{tabular}
+\end{table}
+\end{example}
+\begin{definition}
+%TODO: Can equations here be done more better?
+Bayes rule
+
+Assuming we have event $A$ and $B$,
+$$P(A|B) = \frac{P(A \cap B)}{P(B)} ~~\|* P(B)$$
+if $P(B) > 0$
+$$P(A \cap B) = P(B)P(A|B)$$
+
+And the other way around
+$$P(B|A) = \frac{P(B \cap A)}{P(A)} = \frac{P(A \cap B)}{P(A)} ~~\|* P(A)$$
+if $P(A) > 0$
+$$P(A \cap B) = P(A)P(B|A)$$
+and by using the earlier $P(A \cap B) = P(B)P(A|B)$
+$$P(B)P(A|B) = P(A)P(B|A) ~~\|: P(B)$$
+$$P(A|B) = \frac{P(A)P(B|A)}{P(B)}$$
+This is known as Bayes rule.
+\end{definition}
 \end{document}
