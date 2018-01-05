@@ -53,7 +53,7 @@
 
 \newtheorem{example}{Example}[chapter]
 \newtheorem{definition}{Definition}[chapter]
-
+\newtheorem{theorem}{Theorem}[chapter]
 %\bibpunct{(}{)}{,}{a}{}{,}
 \bibliographystyle{\foldPath saf}
 %\bibliographystyle{alpha}
@@ -123,7 +123,7 @@
   \item The theoretical process that generates the data is called
   \begin{itemize}
     \item Statistical model  or (tilastollinen malli)
-    \item Stochastic process  or (statistinen prosessi)
+    \item Stochastic process  or (stokastinen prosessi)
     \item Random process or (satunnaisprosessi)
   \end{itemize}
   \item The process is random/stochastic because the ``man'' do not behave
@@ -203,6 +203,75 @@ if
 $$A_i \cap A_j = \emptyset$$
 for all pairs of i, j. In addition, if $\bigcup_{i=1}^{\infty}A_i = S$,
 then $A_1$, $A_2$, $A_3$, \ldots defines a partition of the sample space.
-
 \end{example}
+\begin{example}
+Events $A = \{ \heartsuit , \diamondsuit\}$ and $B = \{\clubsuit, \spadesuit
+\}$ are disjoint since 
+$$A \cap B = \emptyset$$
+Events $A_1=\{\heartsuit,
+\diamondsuit \}$, $A_2 = \{ \clubsuit \}$ and $A_3 = \{ \spadesuit \}$
+are pairwise disjoint. Also, since $$\bigcup_{i=1}^{3} = A_1 \cup A_2 \cup A_3 =
+\{\heartsuit , \diamondsuit , \clubsuit, \spadesuit\} = S$$
+they are also partiotion of S.
+\end{example}
+% TODO: Do we something about the dice example? In pdf notes, just example of
+% sample space of dice throw experiment, and how it is numerated. {1,2,3,4,5,6}
+\begin{definition}
+Probability (todennäköisyys)
+
+If a certain experiment is performed number of times (or infinite number of
+times), it may lead to different outcome, which is an event of the sample space.
+This frequency of outcome of an event is called probability.
+
+For an event $A \subset S$ in an experiment, notation $P(A)$ (or $Pr(A)$)
+specifies the probability of outcome / event $A$.
+\end{definition}
+\begin{theorem}
+Axioms of probability
+\begin{itemize}
+  \item[1.]For every event $A$, $P(A) \neq 0$ (meaning every event is possible)
+  \item[2.]$P(S) = 1$ (because something will be observed)
+  \item[3.]For a sequence of pairwise disjoint
+  events,$$P(\bigcup_{i=1}^{\infty}A_i) = \sum_{i=1}^{\infty}P(A_i)$$
+\end{itemize}
+\end{theorem}
+\begin{example}
+Assume we have two events $A_1$, $X \in A_1$ and $A_2$, $X \in A_2$, which have
+probabilities $P(A_1) = 0.2$ and $P(A_2) = 0.3$.
+
+%\textbf{Case 1}%
+If the events are disjoint ($A_1 \cap A_2 = \emptyset$),
+% then
+probability for the union of events is $$P(A_1 \cup A_2) = P(A_1) + P(A_2) = 0.2
++ 0.3 = 0.5$$
+
+%\textbf{Case 2}%
+If events are not disjoint ($A_1 \cap A_2 \neq \emptyset$), then
+$$P(A_1 \cup A_2) \neq P(A_1) + P(A_2) = 0.2 + 0.3 = 0.5$$
+\end{example}
+\begin{example}
+In a fair deck, define events $$A_1 = \{\heartsuit\}, A_2 = \{\diamondsuit\},
+A_3 = \{\clubsuit\}, A_4 = \{\spadesuit\}$$which have probabilities
+$$P(A_1) = P(A_2) = P(A_3) = P(A_4) = 1/4$$
+Events $A_1 \ldots A_4$ are disjoint. Therefor,
+$$B = A_1 \cup A_2 = \{\heartsuit, \diamondsuit\}$$
+$$P(B) = P(A_1 \cup A_2) = P(A_1) + P(A_2) = 1/4 + 1/4 = 1/2$$
+\end{example}
+\begin{theorem}
+Consider events A and B
+\begin{itemize}
+  \item[1.]$P(A^c) = 1 - P(A)$
+  \item[2.]$P(B \cap A^c) = P(B) - P(A \cap B)$
+  \item[3.]$P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+  \item[4.]If $A \subset B$, then $P(A) \leq P(B)$
+\end{itemize}
+\textbf{Note} Consider case 3 of theorem \ref{Theorem2}
+$$P(A \cup B) = P(A) + P(B)-P(A \cap B)$$
+$$P(A \cup B) \leq 1$$
+$$P(A) + P(B)-P(A \cap B) \leq 1$$
+$$P(A \cap B) \geq P(A) + P(B)-1$$
+This equation is called the Bonferroni inequality
+
+\label{Theorem2}
+\end{theorem}
 \end{document}
