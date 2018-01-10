@@ -357,6 +357,7 @@ $$P(A)P(B) = 0.513 * 0.227 = 0.116 \neq 0.160 = P(A \cap B)$$
 we can determine that events $A$ and $B$ are not independent.
 \end{example}
 \chapter{Random variables}
+\section{Random variables}
 \begin{definition}
 A random variable (RV for short) (satunnaismuuttuja) is a function from sample
 space S into the real numbers.\\
@@ -435,8 +436,8 @@ follows:
 
 Consider the sample space $S = {S_1, S_2, \ldots ,S_n}$, and has probability
 function P. Define RV $X$ with sample space / range / support set
-$$ \chi = \{x_1, x_2, \ldots , x_n \}$$ 
-% TODO: Is there any better letter for RV support? Can't use plain X.
+$$ \mathcal{X} = \{x_1, x_2, \ldots , x_n \}$$ 
+% TODO: Is mathcal font good to use with RV supports?.
 $$P_X(X = x_i) = P(\{ s_j \in S : X(s_j) = x_i \})$$
 \textbf{Note} About the notations: Uppercase (capital) letters are used
 for a random variables and lowercase letters for the realized value or range. 
@@ -444,10 +445,11 @@ $X = x$ means, that RV $X$ gets value $x$.
 \end{definition}
 \newpage
 \begin{example}
-\label{exampleTreeCoinToss}
+\label{exampleThreeCoinToss}
 Tree tosses of a coin. Let RV $X$ be the \# of heads, or RV $Y$ is the number of
-tails. For RV $X$, well get space $$\chi = \{0,1,2,3\}$$ See table
-\ref{exampleTreeCoinTossTable1} to see how the sample space values are converted to random variable values.
+tails. For RV $X$, well get space $$\mathcal{X} = \{0,1,2,3\}$$ See table
+\ref{exampleThreeCoinTossTable1} to see how the sample space values are
+converted to random variable values.
 We can then calculate the probabilities that random variable gets certain value
 from its support space. For random variable $X$, these probabilities are
 %TODO: Better way to add space between tabular and text?
@@ -465,9 +467,9 @@ receives value 1 $$P(X=1) = P(\{HTT,~THT,~TTH\}) = \frac{1}{8}+\frac{1}{8}+\frac
 \frac{3}{8}$$
 \end{example}
 \begin{table}
-\caption{Example \ref{exampleTreeCoinToss} experiment's sample
+\caption{Example \ref{exampleThreeCoinToss} experiment's sample
 space value conversion to RV values.}
-\label{exampleTreeCoinTossTable1}
+\label{exampleThreeCoinTossTable1}
 \begin{tabular}{ r | r  r  r  r  r  r  r  r }
 $s_i$ & HHH & HHT & HTH & HTT & THH & THT & TTH & TTT \\
 \hline
@@ -480,11 +482,12 @@ $Y(s_i)$ & 0 & 1 & 1 & 2 & 2 & 1 & 2 & 3 \\
 Waiting time in a phone service. Sample space for experiment is
 $$S = [0,60)$$
 For RV $X$, space will be
-$$\chi = [0, 60)$$
+$$\mathcal{X} = [0, 60)$$
 meaning since the original experiment has sample space that is defined by real
 number, the experiment directly specifies the random variable
  $$X(s) = s$$
 \end{example}
+\section{Cumulative distribution function}
 \begin{itemize}
   \item Starting point with any computation of probability is the distribution
   function.
@@ -543,6 +546,90 @@ Function $F(x)$ is a cdf if and only if the following conditions hold:
 A random variable $X$ is said to be continuous, if $F_X(x)$ is a continuous
 function of x (meaning the function foes hot have jumps).
 \end{theorem}
-\textbf{Note} The $X$ in example \ref{exampleTreeCoinToss} was discrete.
+\textbf{Note} The $X$ in example \ref{exampleThreeCoinToss} was discrete.
 \end{example}
+\begin{example}
+\label{exampleUniformDistribution1}
+An example of a continuous cdf is the uniform distribution. Let RV $U$ have
+equal probabilities within $\mathcal{U} \in [a, b]$. The cdf of $U$ is
+\begin{equation*}
+F_U(u) = \left\{
+\begin{array}{rll}
+0 & \text{if } u < a & u \in (-\infty, a) \\
+\frac{u-a}{b-a} & \text{if }  a \leq u < b & u \in [a, b) \\
+1 & \text{if } u \geq b & u \in [b, \infty) 
+\end{array} \right
+\end{equation*}
+%TODO: Should we add the plot for the cdf here?
+\end{example}
+\begin{itemize}
+  \item The cdf can be used for calculation of the probabilities. In general
+  $$P(x \in (l, u]) = F(u) - F(l)$$
+\end{itemize}
+\begin{example}
+Consider the tossing of 3 coins (example \ref{exampleThreeCoinToss}).
+Probability that more than 1 heads is observed is $$P(X \in (1,3]) =
+F_X(3)-F_X(1) = 1 - 0.5 = 0.5$$
+This result is equal to
+$$P(X=2)+P(X=3)=\frac{3}{8}+\frac{1}{8} = \frac{4}{8} = \frac{1}{2}$$
+\end{example}
+\begin{example}
+Consider uniform distribution where $a=0$ and $b=2$.
+$$P(X \in (0.5, 1]) = F(1) - F(0.5) = 0.5 - 0.25 = 0.25$$
+\end{example}
+\textbf{Note} For continuous RV %TODO: Should this be elaborated more?
+$$P(x \in [a,b]) = P(x \in (a,b)) = P(x \in (a, b]) = P(x \in [a, b))$$
+\begin{definition}
+RVs $X$ and $Y$ are said to be identically distributed (samoin jakautuneita), if
+$F_X(x) = F_Y(x)$ for every x.
+%TODO: Do we need plot here?
+
+Two RVs are said to be independent and identically distributed (i.i.d.) if they
+are both independent and identically distributed.
+\end{definition}
+\section{Probability mass and density functions}
+\begin{itemize}
+  \item The probability mass function (pmf) is defined only for discrete RVs as follows.
+$$f_X(x) = P(X=x)~\text{for all }x$$
+\item The pmf is connected with cdf as follows.
+$$F_X(x) = \sum_{k=1}^{X}f_X(k)$$
+\end{itemize}
+\begin{example}
+\label{exampleBernoulliDistribution1}
+The $Bernoulli(p)$ distribution is used for a discreate RV with two possible
+values (i.e. it is the distribution for so called Bernoulli trial, which has
+two possible outcomes: success (``S'') and failure (``F'')).
+Record the outcomes as a RV:
+
+\begin{tabular}{ l | l }
+s_i & X(s_i) \\ \hline
+``S'' & 1 \\
+``F'' & 0
+\end{tabular}
+
+The pmf of $X$ is
+\begin{equation*}
+F(x; p) = \left\{
+\begin{array}{ll}
+1-p & x = 0 \\
+p & x = 1 \\
+0 & \text{elsewhere} 
+\end{array} \right
+\end{equation*}
+The Bernoulli cdf is
+\begin{equation*}
+F(x; p) = \left\{
+\begin{array}{ll}
+0 & x < 0 \\
+1-p & 0 \leq x < 1 \\
+1 & x \geq 1 %TODO: Is this correct? In notes was \geq 0?
+\end{array} \right
+\end{equation*}
+\textbf{Note} $a$ and $b$ for the uniform distribution (like in example
+\ref{exampleUniformDistribution1}) and the $p$ in case of Bernoulli distribution
+(like in example \ref{exampleBernoulliDistribution1}) are called parameters.
+\end{example}
+\begin{itemize}
+  \item pmf cannot be defined for a continuous RV since it holds
+\end{itemize}
 \end{document}
