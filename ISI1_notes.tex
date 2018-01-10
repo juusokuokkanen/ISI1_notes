@@ -297,6 +297,7 @@ conditional probability (ehdollinen todenn\"akoisyys) of $A$ given $B$ is
 $$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$$
 \end{definition}
 \begin{example}
+\label{clinicalExample1}
 Clinical trial. Assume  that we know the probabilities that are represented in
 table \ref{probTable1}.
 Let event $A$ be the event ``the patient recovered'' with sample space $S =
@@ -343,4 +344,171 @@ $$P(B)P(A|B) = P(A)P(B|A) ~~\|: P(B)$$
 $$P(A|B) = \frac{P(A)P(B|A)}{P(B)}$$
 This is known as Bayes rule.
 \end{definition}
+\begin{definition}
+Two events $A$ and $B$ are independent, if
+$$ P(A \cap B) = P(A)P(B)$$
+If two events are known to be independent, we can compute $P(A \cap B)$ as
+$P(A)P(B)$
+\end{definition}
+\begin{example}
+In example \ref{clinicalExample1} we had $P(A) = 0.513$, $P(B)=0.227$ and
+$P(A \cap B) = 0.160$. By calculating
+$$P(A)P(B) = 0.513 * 0.227 = 0.116 \neq 0.160 = P(A \cap B)$$
+we can determine that events $A$ and $B$ are not independent.
+\end{example}
+\chapter{Random variables}
+\begin{definition}
+A random variable (RV for short) (satunnaismuuttuja) is a function from sample
+space S into the real numbers.\\
+\textbf{Note} If S includes only real numbers, the definition of the RV is
+implicit. Some examples of this in table \ref{tableImplicitEventRV1}. Examples
+of events that not implicitly connected to random variables in table
+\ref{tableImplicitEventRV2}
+\newline
+%TODO: Can we make the aligment of table cells better?
+\begin{table}
+\caption{Examples of implicit connection between event and random variable}
+\label{tableImplicitEventRV1}
+\begin{centering}
+\begin{tabular}{p{6cm} | p{6cm}}
+\textbf{Experiment} & \textbf{Event = Random variable} \\ \hline
+Toss of two dice. & $X$ = Sum of two numbers \\ \hline
+Estimated regression from n observations from certain true model.
+& $X$ = Estimate of slope coefficient $\hat{\beta}_2$ \\ \hline
+Event location in space. & $X$ = \# of events in certain fixed subset of the
+space.
+\end{tabular}
+\end{centering}
+\end{table}
+
+\begin{table}
+\caption{Examples of implicit connection between event and random variable}
+\label{tableImplicitEventRV2}
+\begin{centering}
+\begin{tabular}{p{3cm} | p{5cm} | p{4cm}}
+\textbf{Experiment} & \textbf{S} & \textbf{RV} \\ \hline
+Toss of a coin & $\{``H'', ``T''\}$ & \begin{equation*}
+X_1 = \left\{
+\begin{array}{rl}
+1 & \text{if Head}, \\
+0 & \text{if Tails}
+\end{array} \right
+\end{equation*}
+or
+\begin{equation*}
+X_2 = \left\{
+\begin{array}{rl}
+10 & \text{if Head}, \\
+2 & \text{if Tails}
+\end{array} \right
+\end{equation*}
+\\ \hline
+Health status of tree & $\{``Healthy", ``Sick", ``Dead"\}$ & \begin{equation*}
+X = \left\{
+\begin{array}{rl}
+1 & \text{if Healthy}, \\
+2 & \text{if Sick}, \\
+3 & \text{if Dead}
+\end{array} \right
+\end{equation*}
+or we can define two random variables
+\begin{equation*}
+X_1 = \left\{
+\begin{array}{rl}
+0 & \text{if Healthy or Dead}, \\
+1 & \text{if Sick}
+\end{array} \right
+\end{equation*}
+\begin{equation*}
+X_2 = \left\{
+\begin{array}{rl}
+0 & \text{if Healthy or Sick}, \\
+1 & \text{if Dead}
+\end{array} \right
+\end{equation*}
+\\
+\end{tabular}
+\end{centering}
+\end{table}
+The probability function of the original sample space is defined ot the RV as
+follows:
+
+Consider the sample space $S = {S_1, S_2, \ldots ,S_n}$, and has probability
+function P. Define RV $X$ with sample space / range / support set
+$$ \chi = \{x_1, x_2, \ldots , x_n \}$$ 
+% TODO: Is there any better letter for RV support? Can't use plain X.
+$$P_X(X = x_i) = P(\{ s_j \in S : X(s_j) = x_i \})$$
+\textbf{Note} About the notations: Uppercase (capital) letters are used
+for a random variables and lowercase letters for the realized value or range. 
+$X = x$ means, that RV $X$ gets value $x$.
+\end{definition}
+\newpage
+\begin{example}
+\label{exampleTreeCoinToss}
+Tree tosses of a coin. Let RV $X$ be the \# of heads, or RV $Y$ is the number of
+tails. For RV $X$, well get space $$\chi = \{0,1,2,3\}$$ See table
+\ref{exampleTreeCoinTossTable1} to see how the sample space values are converted to random variable values.
+We can then calculate the probabilities that random variable gets certain value
+from its support space. For random variable $X$, these probabilities are
+%TODO: Better way to add space between tabular and text?
+\newline
+\newline
+\begin{tabular}{r | r r r r}
+$x$ & 0 & 1 & 2 & 3 \\
+$P(X=x)$ & $\frac{1}{8}$ & $\frac{3}{8}$ & $\frac{3}{8}$ & $\frac{1}{8}$
+\end{tabular}
+\newline
+\newline
+Now, we can get the probability of event, that with three coin tosses,
+we get only one heads, by getting the probability that random variable $X$
+receives value 1 $$P(X=1) = P(\{HTT,~THT,~TTH\}) = \frac{1}{8}+\frac{1}{8}+\frac{1}{8} =
+\frac{3}{8}$$
+\end{example}
+\begin{table}
+\caption{Example \ref{exampleTreeCoinToss} experiment's sample
+space value conversion to RV values.}
+\label{exampleTreeCoinTossTable1}
+\begin{tabular}{ r | r  r  r  r  r  r  r  r }
+$s_i$ & HHH & HHT & HTH & HTT & THH & THT & TTH & TTT \\
+\hline
+$X(s_i)$ & 3 & 2 & 2 & 1 & 2 & 1 & 1 & 0 \\
+$Y(s_i)$ & 0 & 1 & 1 & 2 & 2 & 1 & 2 & 3 \\
+\hline
+\end{tabular}
+\end{table}
+\begin{example}
+Waiting time in a phone service. Sample space for experiment is
+$$S = [0,60)$$
+For RV $X$, space will be
+$$\chi = [0, 60)$$
+meaning since the original experiment has sample space that is defined by real
+number, the experiment directly specifies the random variable
+ $$X(s) = s$$
+\end{example}
+\begin{itemize}
+  \item Starting point with any computation of probability is the distribution
+  function.
+\end{itemize}
+\begin{definition}
+The culmulative distribution function (kertym\"afunktio) or just distribution
+function (cdf for short) is defined as
+\begin{equation*}
+F_X(x) = P_X(X \leq x)~\text{for all $x$}
+\end{equation*}
+\end{definition}
+\begin{example}
+Tossing of 3 coins. Random variable $X$ = the \# of heads. Cumulative
+distribution function for RV $X$ can be defined as
+\begin{equation*}
+F_X(x) = \left\{
+\begin{array}{rll}
+0 & \text{if } -\infty < x < 0 & x \in (-\infty, 0) \\
+\frac{1}{8} & \text{if } 0 \leq x < 0 & x \in [0, 1) \\
+\frac{1}{2} & \text{if } 1 \leq x < 0 & x \in [1, 2) \\
+\frac{7}{8} & \text{if } 2 \leq x < 0 & x \in [2, 3) \\
+1 & \text{if } 3 \leq x < \infty & x \in [3, \infty) 
+\end{array} \right
+\end{equation*}
+\textbf{Note} $F_X(x)$ is defined for all $x$!
+\end{example}
 \end{document}
