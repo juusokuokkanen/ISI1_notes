@@ -509,6 +509,40 @@ F_X(x) = \left\{
 1 & \text{if } 3 \leq x < \infty & x \in [3, \infty) 
 \end{array} \right
 \end{equation*}
-\textbf{Note} $F_X(x)$ is defined for all $x$!
+%TODO: There is a plot about the cdf and also some specification how value for
+% 1/2 and 7/8 are gotten. Are they needed?
+\textbf{Notes}
+\begin{itemize}
+  \item[-] $F_X(x)$ is defined for all $x$!
+  %TODO: If the plot for cdf is added, here is additional note.
+  %\item[-] $F_X(x) has jumps at x_i \in \chi$. The jumps equal to P(X=x_i).
+  \item[-] $F_X(x) = 0$ for $x < 0$ and $F_X(x) = 1$ for $x \geq 3$.
+  \item[-] $F_X(x)$ is right-continuous: the value of $F_X(x)$ at the jump is
+  the one we get by approaching the jump from the right.
+  \item[-] $F_X(x)$ is discontinuous (in this example).
+\end{itemize}
+\begin{theorem}
+\label{rulesForCdfTheorem}
+Function $F(x)$ is a cdf if and only if the following conditions hold:
+\begin{itemize}
+  \item[a)] $\lim_{x \rightarrow -\infty}F(x) = 0$ and $\lim_{x \rightarrow
+  \infty}F(x) = 1$.
+  \item[b)] $F(x)$ is non-decreasing (kasvava) (meaning value of function
+  is either increasing or constant as $x$ increases)
+  \item[c)] $F(x)$ is right-continuous, i.e. for every $x_0$ 
+  $$\lim_{x \downarrow x_0}F(x) = F(x_0)$$
+\end{itemize}
+\end{theorem}
+\begin{itemize}
+  \item If a function is said to be a cdf, it has to fulfill the rules a, b and
+  c of theorem \ref{rulesForCdfTheorem}.
+  \item If a function fulfills rules a, b and c of theorem
+  \ref{rulesForCdfTheorem}, then it can be used as a cdf.
+\end{itemize}
+\begin{theorem}
+A random variable $X$ is said to be continuous, if $F_X(x)$ is a continuous
+function of x (meaning the function foes hot have jumps).
+\end{theorem}
+\textbf{Note} The $X$ in example \ref{exampleTreeCoinToss} was discrete.
 \end{example}
 \end{document}
