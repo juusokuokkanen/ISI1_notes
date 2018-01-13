@@ -107,9 +107,9 @@
     population
     \item The behavior of individuals = data
   \end{itemize}
-  \item Assuming a constat probability $p$ may be a too simplistic or naive
-  assuption, and may be replaced by more realistic one where p is a function of
-  the propabilities of the individual and the context where s/he is.
+  \item Assuming a constant probability $p$ may be a too simplistic or naive
+  assumption, and may be replaced by more realistic one where p is a function of
+  the probabilities of the individual and the context where s/he is.
   \item We also need to specify a model, for the variability of the
   individuals around the $p$ to complete the model formulation.
   \begin{itemize}
@@ -212,7 +212,7 @@ Events $A_1=\{\heartsuit,
 \diamondsuit \}$, $A_2 = \{ \clubsuit \}$ and $A_3 = \{ \spadesuit \}$
 are pairwise disjoint. Also, since $$\bigcup_{i=1}^{3} = A_1 \cup A_2 \cup A_3 =
 \{\heartsuit , \diamondsuit , \clubsuit, \spadesuit\} = S$$
-they are also partiotion of S.
+they are also partition of S.
 \end{example}
 % TODO: Do we something about the dice example? In pdf notes, just example of
 % sample space of dice throw experiment, and how it is numerated. {1,2,3,4,5,6}
@@ -393,7 +393,7 @@ X_1 = \left\{
 \begin{array}{rl}
 1 & \text{if Head}, \\
 0 & \text{if Tails}
-\end{array} \right
+\end{array} \right.
 \end{equation*}
 or
 \begin{equation*}
@@ -401,7 +401,7 @@ X_2 = \left\{
 \begin{array}{rl}
 10 & \text{if Head}, \\
 2 & \text{if Tails}
-\end{array} \right
+\end{array} \right.
 \end{equation*}
 \\ \hline
 Health status of tree & $\{``Healthy", ``Sick", ``Dead"\}$ & \begin{equation*}
@@ -410,7 +410,7 @@ X = \left\{
 1 & \text{if Healthy}, \\
 2 & \text{if Sick}, \\
 3 & \text{if Dead}
-\end{array} \right
+\end{array} \right.
 \end{equation*}
 or we can define two random variables
 \begin{equation*}
@@ -418,14 +418,14 @@ X_1 = \left\{
 \begin{array}{rl}
 0 & \text{if Healthy or Dead}, \\
 1 & \text{if Sick}
-\end{array} \right
+\end{array} \right.
 \end{equation*}
 \begin{equation*}
 X_2 = \left\{
 \begin{array}{rl}
 0 & \text{if Healthy or Sick}, \\
 1 & \text{if Dead}
-\end{array} \right
+\end{array} \right.
 \end{equation*}
 \\
 \end{tabular}
@@ -510,7 +510,7 @@ F_X(x) = \left\{
 \frac{1}{2} & \text{if } 1 \leq x < 0 & x \in [1, 2) \\
 \frac{7}{8} & \text{if } 2 \leq x < 0 & x \in [2, 3) \\
 1 & \text{if } 3 \leq x < \infty & x \in [3, \infty) 
-\end{array} \right
+\end{array} \right.
 \end{equation*}
 %TODO: There is a plot about the cdf and also some specification how value for
 % 1/2 and 7/8 are gotten. Are they needed?
@@ -558,7 +558,7 @@ F_U(u) = \left\{
 0 & \text{if } u < a & u \in (-\infty, a) \\
 \frac{u-a}{b-a} & \text{if }  a \leq u < b & u \in [a, b) \\
 1 & \text{if } u \geq b & u \in [b, \infty) 
-\end{array} \right
+\end{array} \right.
 \end{equation*}
 %TODO: Should we add the plot for the cdf here?
 \end{example}
@@ -596,13 +596,13 @@ $$F_X(x) = \sum_{k=1}^{X}f_X(k)$$
 \end{itemize}
 \begin{example}
 \label{exampleBernoulliDistribution1}
-The $Bernoulli(p)$ distribution is used for a discreate RV with two possible
+The $Bernoulli(p)$ distribution is used for a discrete RV with two possible
 values (i.e. it is the distribution for so called Bernoulli trial, which has
 two possible outcomes: success (``S'') and failure (``F'')).
 Record the outcomes as a RV:
 
 \begin{tabular}{ l | l }
-s_i & X(s_i) \\ \hline
+$s_i$ & $X(s_i)$ \\ \hline
 ``S'' & 1 \\
 ``F'' & 0
 \end{tabular}
@@ -614,7 +614,7 @@ F(x; p) = \left\{
 1-p & x = 0 \\
 p & x = 1 \\
 0 & \text{elsewhere} 
-\end{array} \right
+\end{array} \right.
 \end{equation*}
 The Bernoulli cdf is
 \begin{equation*}
@@ -623,7 +623,7 @@ F(x; p) = \left\{
 0 & x < 0 \\
 1-p & 0 \leq x < 1 \\
 1 & x \geq 1 %TODO: Is this correct? In notes was \geq 0?
-\end{array} \right
+\end{array} \right.
 \end{equation*}
 \textbf{Note} $a$ and $b$ for the uniform distribution (like in example
 \ref{exampleUniformDistribution1}) and the $p$ in case of Bernoulli distribution
@@ -690,8 +690,8 @@ This is a consequence of central limit theorem.
 \textbf{Note} Often the parameters of a distribution are functions, not singe
 numbers. For example, the probability of success, $p$, in the Bernoulli case
 may depend on some fixed/known characteristics $x$ of sampling  unit, ie. we
-have $p(x)$ instad of the p. Or the mean of normally distributed RV may also depend
-on $x$, so we use $\mu(x)$ instead of $\mu$. Examples 1.1. and 1.2. in
+have $p(x)$ instead of the p. Or the mean of normally distributed RV may also
+depend on $x$, so we use $\mu(x)$ instead of $\mu$. Examples 1.1. and 1.2. in
 \verb#notes.pdf# demonstrate this
 \begin{example} $p(Age) = 0.1 + 0.0005*Age$
 \begin{itemize}
@@ -719,7 +719,7 @@ model.
   \item The probabilistic properties of Y can be expressed using those of X:
   $$P(Y \in A) = P(g(x) \in A)$$
   \item If $g(x)$ is monotonic function in $X$, we can define the inverse
-  function $g^{-1}(y): \matchcal{Y} \rightarrow \mathcal{X}$ and establish the
+  function $g^{-1}(y): \mathcal{Y} \rightarrow \mathcal{X}$ and establish the
   theorem \ref{theoremTransformations1}.
 \end{itemize}
 \begin{theorem}
@@ -733,7 +733,7 @@ and $\mathcal{Y} = \{y: y=(g(x)~\text{for some } x \in \mathcal{X}\}$
     \item If $g(x)$ specifies $y(x)$, we solve $y(x) = y$ for $x$ to write $x$
     in terms of $y$ $x(y) = g^{-1}(y)$.
   \end{itemize}
-  \item[b)] If $g$ is decreasing function of $\matchcal{X}$ and $X$ is
+  \item[b)] If $g$ is decreasing function of $\mathcal{X}$ and $X$ is
   continuous, then 
   $$F_Y(y) = 1 - F_X(g^{-1}(y))$$
 \end{itemize}
@@ -776,7 +776,7 @@ The pdf of $Y$ is
 \begin{array}{ll}
 f_X(g^{-1}(y)) \vert \frac{d}{dx}g^{-1}(y) \vert & y \in \mathcal{Y} \\
 0 & otherwise
-\end{array}
+\end{array} \right.
 \end{equation*}
 \end{theorem}
 %TODO: Should we have the example here (that just tells to look the previous)?
@@ -800,7 +800,7 @@ transformation $g(u) = q_X(u)$ provides a random sample from the distribution of
 0.1x & \text{when }0 < x \leq 5 & (*) \\
 0.25 + 0.05x & \text{when }5 < x \leq 15 & (**) \\
 1 & x > 15
-\end{array}
+\end{array}\right.
 \end{equation*}
 Then, the quartile functions for parts (*) and (**) are solved from $F(x) = u$
 by solving x. 
@@ -820,9 +820,155 @@ Which provide us with the quartile function for $X$
 \begin{array}{lll}
 10u & \text{if }u \in [0, 0.5) \\
 20u-5 + 0.05x & \text{if }u \in [0.5, 1] \\
-\end{array}
+\end{array} \right.
 \end{equation*}
 Quartile function $q(u)$ implemented in R-script \verb#probIntTrans.R#.
 %TODO: Is the plot from page 4 of notes 6 needed?
 \end{example}
+\section{Expected value}
+\begin{definition}
+Expected value or mean (odotusarvo) of a random variable $g(X)$ is
+\begin{equation*} E(g(X)) =
+\left\{
+\begin{array}{ll}
+\int_{-\infty}^{\infty} g(x)f(x) dx & \text{if $x$ is continuous} \\
+\sum_{x \in \mathcal{X}} g(x)f(x) dx & \text{if $x$ is discrete}
+\end{array} \right.
+\end{equation*}
+provided that sum/integral exists. If $E(g(X)) = \infty$, we say that the
+expected value does not exist.
+
+\textbf{Note} If $g(x) = x$, the above rule simplifies to
+\begin{equation*} E(g(X)) =
+\left\{
+\begin{array}{ll}
+\int_{-\infty}^{\infty} xf(x) dx & \text{if $x$ is continuous} \\
+\sum_{x \in \mathcal{X}} xf(x) dx & \text{if $x$ is discrete}
+\end{array} \right.
+\end{equation*}
+
+\end{definition}
+\begin{example}
+Let $X \sim Exponential(\lambda)$ which has the pdf
+$$\begin{array}{ll}
+f_X(x) = \frac{1}{\lambda}e^{-\frac{x}{\lambda}} & 0 < x < \infty
+\end{array}$$
+And the expected value is
+%TODO: There are many explanations in the original notes how different stages of
+% integration are achived, but left them out for now.
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+E(X) & = \int_{0}^{\infty} xf_X(x) dx \\
+& =-\int_{0}^{\infty}x\left (-\frac{1}{\lambda}e^{-\frac{x}{\lambda}}\right )dx
+\\
+& = \Big|_{0}^{\infty}
+-xe^{-\frac{x}{\lambda}}+\int_{0}^{\infty}1e^{-\frac{x}{\lambda}}dx \\
+& = -0-(-0)+\left (
+-\lambda\int_{0}^{\infty}-\frac{1}{\lambda}e^{-\frac{x}{\lambda}}dx \right ) \\
+& =-\lambda \Big|_{0}^{\infty} e^{-\frac{x}{\lambda}} \\
+& = -\lambda(0-1) = \lambda
+\end{array}
+\end{equation*}
+%E(X) = \int_{0}^{\infty} xf_X(x) dx
+%=-\int_{0}^{\infty}x\left (-\frac{1}{\lambda}e^{-\frac{x}{\lambda}}\right )dx
+% \\
+%= \Big|_{0}^{\infty}
+%-xe^{-\frac{x}{\lambda}}+\int_{0}^{\infty}1e^{-\frac{x}{\lambda}}dx =
+%-0-(-0)+\left (
+%-\lambda\int_{0}^{\infty}-\frac{1}{\lambda}e^{-\frac{x}{\lambda}}dx \right ) \\
+%=-\lambda \Big|_{0}^{\infty} e^{-\frac{x}{\lambda}} = -\lambda(0-1) = \lambda
+Computation of the expected values can get quite hard. Examples 1.10. and 1.11.
+in \verb#notes.pdf# demonstrate numerical approximations.
+%TODO: There we some additional stuff about using R in the integration. Needed?
+\end{example}
+%TODO: Are the notes about how integration is done in R needed? Page 1 notes 7.
+\begin{theorem}
+Let $X$ and $Y$ be random variables and $a$, $b$ and $c$ fixed constants. The
+following rules hold:
+\begin{itemize}
+\item[] $E(c) = c$
+\item[] $E(cX) = cE(X)$
+\item[] $E(X+Y) = E(X) + E(Y)$
+\item[] $E(X+c) = E(X) + c$
+\item[] $E(XY) \neq E(X)E(Y)$
+\begin{itemize}
+  \item $E(XY)$ depends on distribution of $X$ and $Y$.
+\end{itemize}
+\item[] $E(g(X)) \neq g(E(X))$
+\begin{itemize}
+  \item If $g$ is nonlinear function of X.
+  \item Also depends on the distribution of X.
+  \item If $g$ is linear, then we get rule (*).
+\end{itemize}
+\textbf{Also}
+\item[] $E(a*g_1(X) + b*g_2(Y)+c) = a*E(g_1(X))+b*E(g_2(Y))+c$
+\end{itemize}
+\end{theorem}
+\textbf{Note} $E(Y) = E(g(X))$ can be computed in two ways:
+\begin{itemize}
+  \item[1)] $E(g(x)) = \int_{-\infty}^{\infty}g(x)f_X(x)dx$
+  \item[2)] $E(g(x)) = E(Y) = \int_{-\infty}^{\infty}yf_Y(y)dy =
+  \int_{-\infty}^{\infty}yf_X(g^{-1}(y)) \left|\left| \frac{d}{dy}g^{-1}(y)
+  \right|\right| dy$ %TODO: Better way to do double lines?
+\end{itemize}
+\begin{definition}
+The variance is defined as
+$$Var(X) = E\left[\left(X-E(X)\right)^2\right],\text{ and } var(X) \geq 0\text{
+always.}$$
+The square root of $Var(X)$ is called the standard deviation sd
+$$sd(x) = \sqrt{Var(X)}$$
+\end{definition}
+\begin{example}
+Let $X \sim Exponential(\lambda)$, meaning the $X$ has pdf $f_X(x) =
+\frac{1}{\lambda}e^{-\frac{x}{\lambda}}$. The variance of $X$ is
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+Var(X) & = E\left[(x-\lambda)^2\right] \\
+& = E(g(X)) \\
+& =
+\int_{-\infty}^{\infty}(x-\lambda)^2\frac{1}{\lambda}e^{-\frac{x}{\lambda}}dx \\
+&=
+\int_{-\infty}^{\infty}(x^2-2x\lambda+\lambda^2)\frac{1}{\lambda}e^{-\frac{x}{\lambda}}dx
+\\
+&= \int_{-\infty}^{\infty}x^2\frac{1}{\lambda}e^{-\frac{x}{\lambda}}dx -
+\int_{-\infty}^{\infty}2x\lambda \frac{1}{\lambda}e^{-\frac{x}{\lambda}}dx+
+\int_{-\infty}^{\infty}\lambda^2 \frac{1}{\lambda}e^{-\frac{x}{\lambda}}dx \\
+&=\text{(integrate each term by parts)} = \lambda^2
+\end{array}
+\end{equation*}
+\end{example}
+\textbf{Note} A computationally convenient form of $Var(x)$ is obtained as
+follows:
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+Var(X)& = E\left[(X-E(X))^2\right] \\
+& = E\left[X^2 - 2XE(X) + [E(X)]^2 \right] \\
+& = E(X^2) - E[2XE(X)] + E[(E(X))^2] \\
+& = E(X^2) - 2[E(X)]^2+ [E(X)]^2 \\
+& = E(X^2) - [E(X)]^2
+\end{array}
+\end{equation*}
+So $Var(X) = E\left[(X-E(X))^2\right] = E(X^2) - [E(X)]^2$. For continuous
+random variables, the variance can be approximated numerically using integrate.
+See example 1.4. in \verb#notes.pdf#. We can either use
+$$Var(X)=\int_{-\infty}^{\infty}[X-E(X)]^2f(x)dx$$
+or
+$$Var(X) = E(X^2)-[E(X)]^2 = \int_{-\infty}^{\infty}x2f(x)dx 
+- \left(\int_{-\infty}^{\infty}xf(x)dx \right )^2$$
+\begin{theorem}
+Let $X$ be a random variable with a finite variance and $a$ and $b$ are finite
+constants. Then
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{lll}
+Var(aX+b)& = a^2Var(X) \\
+sd(aX+b) & = \sqrt{Var(aX+b)} \\
+& = \sqrt{a^2Var(X)} & = a\sqrt{Var(X)} \\
+& & =a*sd(x)
+\end{array}
+\end{equation*}
+\end{theorem}
 \end{document}
