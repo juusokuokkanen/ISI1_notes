@@ -754,6 +754,75 @@ $$-ln(x) \rightarrow \infty,~\text{as } x \rightarrow \infty $$
 $$y = -ln(x)~~||*(-1)$$
 $$-y = ln(x)$$
 $$x = e^{-y} = g^{-1}(y)$$
+\item The cdf of Y is
+$$F_Y(y) = 1 - F_X(g^{-1}(y)) = 1 - F_X(e^{-y}) = 1 - e^{-y}$$
+\item The pdf of Y is
+$$f_Y(y) = \frac{dF_Y(y)}{dy} = \frac{d(1-e^{-y})}{dy} = -e^{-y}(-1)=e^{-y}$$
+%TODO: In notes, it was exponential pdf, but capital F is suposed to mean cdf.
+\item Note: $F_Y(y)$ is called the exponential cdf with the rate parameter 1.
+$f_Y(y)$ is the corresponding density.
 \end{itemize}
+%TODO: Two plots on page 2 of notes 5. Should they be added?
+\end{example}
+\begin{theorem} Let $X \sim f_X(x)$ and $Y=g(X)$ be a monotone transformation,
+and supports $\mathcal{X} = \{x, f_X(x) > 0\}$
+and $\mathcal{Y} = \{y: y=(g(x)~\text{for some } x \in \mathcal{X}\}$ (like in
+theorem \ref{theoremTransformations1}). Suppose that $f_X(x)$ is continuous on
+$\mathcal{X}$ and $g^{-1}(y)$ has continuous derivative on $\mathcal Y$.
+
+The pdf of $Y$ is
+\begin{equation*} f_Y(y) =
+\left\{
+\begin{array}{ll}
+f_X(g^{-1}(y)) \vert \frac{d}{dx}g^{-1}(y) \vert & y \in \mathcal{Y} \\
+0 & otherwise
+\end{array}
+\end{equation*}
+\end{theorem}
+%TODO: Should we have the example here (that just tells to look the previous)?
+\begin{definition}
+Let $X$ have cdf $F(x)$. Quartile function of $X$ is defined as the inverse of
+cdf:
+$$q(u) = F^{-1}(u)$$
+\end{definition}
+\begin{example}
+We want to find a value of $X$ such that $P(X \leq x) = 0.95$. The solution is
+given by $q(x) = q(0.95) = \ldots = x_*$ %TODO: Is this correct?
+\end{example}
+\begin{example}
+Random number generator. Let $q_x(u)$  be the quartile function of $X$. If we
+are able to generate a sample from $U \sim Uniform(0,1)$ distribution,
+transformation $g(u) = q_X(u)$ provides a random sample from the distribution of $X$.
+\begin{equation*} F(x) =
+\left\{
+\begin{array}{lll}
+0 & x \leq 0 & \\ %TODO: In the notes was x \leq x but used x \leq 0. Correct?
+0.1x & \text{when }0 < x \leq 5 & (*) \\
+0.25 + 0.05x & \text{when }5 < x \leq 15 & (**) \\
+1 & x > 15
+\end{array}
+\end{equation*}
+Then, the quartile functions for parts (*) and (**) are solved from $F(x) = u$
+by solving x. 
+
+Part (*)
+$$0.1x = u$$
+$$x = 10u$$
+$$\text{ for } F(0) < u \leq F(5) \rightarrow 0 < u \leq 0.5$$
+
+Part (**)
+$$0.25+0.05x = u$$
+$$x = 20u - 5$$
+$$\text{ for } F(5) < u \leq F(15) \rightarrow 0.5 < u \leq 1$$
+Which provide us with the quartile function for $X$
+\begin{equation*} q(u) =
+\left\{
+\begin{array}{lll}
+10u & \text{if }u \in [0, 0.5) \\
+20u-5 + 0.05x & \text{if }u \in [0.5, 1] \\
+\end{array}
+\end{equation*}
+Quartile function $q(u)$ implemented in R-script \verb#probIntTrans.R#.
+%TODO: Is the plot from page 4 of notes 6 needed?
 \end{example}
 \end{document}
