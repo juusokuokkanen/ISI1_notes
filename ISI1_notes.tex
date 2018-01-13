@@ -629,7 +629,52 @@ F(x; p) = \left\{
 \ref{exampleUniformDistribution1}) and the $p$ in case of Bernoulli distribution
 (like in example \ref{exampleBernoulliDistribution1}) are called parameters.
 \end{example}
+%TODO: Is the plot needed?
 \begin{itemize}
   \item pmf cannot be defined for a continuous RV since it holds
+  $$P(X=x) \leq \lim_{\epsilon \downarrow 0} [F_X(x) - F_X(x - \epsilon)] = 0$$
+  \item For continuous RV, the sum of pmf is replaced by integral\ldots
+  $$P(X \leq x) = F_X(x) = \int_{-\infty}^{x} f_X(t)dt$$
+  \item \ldots which also implies
+  $$\frac{d}{dx}F_X(x)=f_X(x)$$
 \end{itemize}
+\begin{definition}
+Function $f_X(x)$ above is called probability density function (pdf for short)
+(tiheysfunktio).
+\end{definition}
+\begin{theorem}
+A function $f(x)$ is a pdf or pmf, if
+\begin{itemize}
+  \item[a)]$f(x) \geq 0 $ for all x
+  \item[b)]$$\sum_X f(x) = 1~\text{(if pmf)}$$
+  or
+  $$\int_{-\infty}^{\infty} f(x) dx = 1~\text{(if pdf)}$$
+\end{itemize}
+%TODO: Are the plots for pmf and pdf needed here?
+\end{theorem}
+\textbf{Note} Notation $\sim$ means ``is distributed as''; for example
+\begin{itemize}
+  \item $X \sim f(x)$
+  \item $X \sim F(x)$
+  \item $X \sim Bernoulli(p)$
+\end{itemize}
+\begin{example}
+Perhaps the most widely used continuous distribution is the Normal distribution,
+which has support $(-\infty, \infty)$, and pdf
+$$f(x; \mu, \sigma) =
+\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},~-\infty < \mu <
+\infty,~\sigma > 0$$
+If $\mu = 0$ and $\sigma = 1$, then function is called standard normal density
+(standardoitu normaali jakauma).
+%TODO: Is the plot here needed?
+The cdf of normal distribution 
+$$\int_{-\infty}^{x}f_X(t)dt =
+\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{x}e^{-\frac{(t-\mu)^2}{\sigma^2}}dt=\ldots$$
+%TODO: is the \sigma^2 correct above or is it just \sigma?
+but it cannot be written in closed form. However, R and other software can
+compute the value numerically.
+
+\textbf{Note} Parameters: $\mu$ is the expected value, and $\igma$ is the
+standard deviation of X.
+\end{example}
 \end{document}
