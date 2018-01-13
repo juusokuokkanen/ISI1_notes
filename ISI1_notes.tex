@@ -147,7 +147,7 @@
     \item Estimated model (Estimoitu malli)
     \item True model always stays the same, but as data used to formulate the
     estimated model gets larger, the estimated model gets closer to true model.
-    \item See example R-scipt \verb#regsimu.R#
+    \item See example R-script \verb#regsimu.R#
   \end{itemize}
 \end{itemize}
 \section{Set theory}
@@ -674,7 +674,86 @@ $$\int_{-\infty}^{x}f_X(t)dt =
 but it cannot be written in closed form. However, R and other software can
 compute the value numerically.
 
-\textbf{Note} Parameters: $\mu$ is the expected value, and $\igma$ is the
+\textbf{Note} Parameters: $\mu$ is the expected value, and $\sigma$ is the
 standard deviation of X.
+\end{example}
+\begin{example}
+Let $U \sim Uniform(0, 10)$ and X be the sample mean
+$\frac{\sum_{i=1}^{n}u_i}{n}$ i n a sample of size n. R-script \verb#unifmean.R#
+illustrates, that if $n$ is sufficiently large, then
+$$X \sim N(\frac{10}{2}, \frac{10/\sqrt{12}}{n})$$
+This is a consequence of central limit theorem.
+\end{example}
+%TODO: Is the bernoulli example needed (multiple left/right bernoulli
+% experiments from normal distribution)? Leaving it out for now, since relies so much in the
+% visualization.
+\textbf{Note} Often the parameters of a distribution are functions, not singe
+numbers. For example, the probability of success, $p$, in the Bernoulli case
+may depend on some fixed/known characteristics $x$ of sampling  unit, ie. we
+have $p(x)$ instad of the p. Or the mean of normally distributed RV may also depend
+on $x$, so we use $\mu(x)$ instead of $\mu$. Examples 1.1. and 1.2. in
+\verb#notes.pdf# demonstrate this
+\begin{example} $p(Age) = 0.1 + 0.0005*Age$
+\begin{itemize}
+  \item [If] $Age = 0$, then $p(0) = 0.1$.
+  \item [If] $Age = 10$, then $p(10) = 0.15$
+  \item [If] $Age = 100$, then $p(10) = 0.1 + 0.5 = 0.6$
+\end{itemize}
+Since $p(Age)$ as specified above may become negative or higher than 1 with some
+values of the parameter $Age$, function $p(x)$ should be defined so, that it
+can only get values within $(0,1)$. This could be achieved with binary logistic
+model.
+\end{example}
+%TODO: Should we have these two examples (one above and one bellow)?
+%\begin{example} We have normal distributed random variable $Y \sim N(\mu(x),
+%\sigma)$, where
+%$\mu(x) = 0.5*x$, where $x$ is tree age and $\sigma = 2$. $Y$ specifies the
+%diameter of the tree.
+%
+%\end{example}
+\section{Transformations of a random variable}
+\begin{itemize}
+  \item If $X$ is a random variable, then any function of it, e.g. $Y=g(x):
+  \mathcal{X} \rightarrow \mathcal{Y}$ is also a random variable, where the
+  function $g(x)$ is called transformation.
+  \item The probabilistic properties of Y can be expressed using those of X:
+  $$P(Y \in A) = P(g(x) \in A)$$
+  \item If $g(x)$ is monotonic function in $X$, we can define the inverse
+  function $g^{-1}(y): \matchcal{Y} \rightarrow \mathcal{X}$ and establish the
+  theorem \ref{theoremTransformations1}.
+\end{itemize}
+\begin{theorem}
+\label{theoremTransformations1}
+Let $X$ have cdf $F_X(x)$. Let $Y = g(x)$ and $\mathcal{X} = \{x, f_X(x) > 0\}$
+and $\mathcal{Y} = \{y: y=(g(x)~\text{for some } x \in \mathcal{X}\}$
+\begin{itemize}
+  \item[a)] If $g$ is an increasing function of $\mathcal{X}$, then 
+  $$F_Y(y) = F_X(g^{-1}(y))\text{ for }y \in \mathcal{Y}$$
+  \begin{itemize}
+    \item If $g(x)$ specifies $y(x)$, we solve $y(x) = y$ for $x$ to write $x$
+    in terms of $y$ $x(y) = g^{-1}(y)$.
+  \end{itemize}
+  \item[b)] If $g$ is decreasing function of $\matchcal{X}$ and $X$ is
+  continuous, then 
+  $$F_Y(y) = 1 - F_X(g^{-1}(y))$$
+\end{itemize}
+\end{theorem}
+\begin{example}
+Suppose $X \sim Uniform(0, 1)$. Now $F_X(x) = x,~ 0 < x < 1$. Consider
+transformation $Y=g(x) = -ln(x)$.
+\begin{itemize}
+  \item $ln(x)$ is decreasing, since $\frac{d}{dx}(-ln(x)) = -\frac{1}{x} < 0$
+  when $x > 0$
+  $$\mathcal{X} \in (0,1) \rightarrow \mathcal{Y} \in (0, \infty)$$
+\item Because $g(x)$ is decreasing, the minimum of $Y$ will be obtained at the
+maximum value of $X$.
+$$-ln(1) = 0,~\text{(minimum of $Y$)}$$
+\item The maximum of $Y$ is obtained at the minimum of $X$.
+$$-ln(x) \rightarrow \infty,~\text{as } x \rightarrow \infty $$
+\item We can get the $g^{-1}$ by solving $x$ for $y = g(x)$
+$$y = -ln(x)~~||*(-1)$$
+$$-y = ln(x)$$
+$$x = e^{-y} = g^{-1}(y)$$
+\end{itemize}
 \end{example}
 \end{document}
