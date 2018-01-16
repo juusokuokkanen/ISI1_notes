@@ -1194,4 +1194,41 @@ P(\frac{1}{2} < x < \frac{3}{4}) &=\int_{\frac{1}{2}}^{\frac{3}{4}}f_X(x) \ud x\
  \ud t $$
  $$\frac{\ud F(x,y)}{\ud x \ud y} = f(x,y)$$
 \end{itemize}
+\chapter{Conditional distributions}
+\begin{itemize}
+  \item Often two random variables are related.
+  \item E.g. $X =$ height and $Y$ is the weight of a person.
+  \item It is more likely, that $Y > 80$kg, if $X=180$cm, than if $X=150$cm.
+  \item $X$ gives some information on $Y$, but it does not tell $Y$ exactly.
+  
+  \item \textbf{Note} If the relationship between $X$ and $Y$ would be exact,
+  then we would have $Y=g(X)$ and we could analyze the data by considering $Y$ as a
+  transformation of $X$.
+  
+  \item Sometimes $Y$ does not tell anything about $X$.
+  \item We analyze such cases using the conditional distributions, which apply
+    the previously presented idea about conditional probability to probability
+    distribution.
+\end{itemize}
+\begin{definition}
+Let $(X,Y)$ be discrete bivariate random vector with joint pmf $f(x,y)$ and
+marginal pmf's $f_X(x)$ and $f_Y(y)$.
+
+For any $x$ such that $P(X=x)=f_X(x)>0$, the conditional pmf of $Y$ given that
+$X=x$ is the function of $y$ denoted by $f(y \mid x)$ and defined by
+$$f(y \mid x) = P(Y=y \mid X=x) = \frac{f(x,y)}{f_X(x)}$$
+Correspondingly for any $y$ such that $P(Y=y)>0$, the conditional $pmf$ of $x$
+given that $Y=y$ is
+$$f(x \mid y) = P(X=x \mid Y=y) = \frac{f(x,y)}{f_Y(y)}$$
+\textbf{Note} $f(y|x)$ is a pmf since
+\begin{itemize}
+  \item[1)] $f(y|x) \geq 0$ for all $y$ because $f(x,y)\geq 0$ for all $x,y$.
+  \item[2)] $\sum_{y \in Y}f(y \mid x) = \frac{\sum_{y}f(x,y)}{f_X(x)} =
+  \frac{f_X(x)}{f_X(x)} = 1$
+\end{itemize}
+See example 1.24. in \verb#notes.pdf#. %TODO: Should the actual example be here?
+\end{definition}
+\begin{itemize}
+  \item The extension to continuous random variables is given next.
+\end{itemize}
 \end{document}
