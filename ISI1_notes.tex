@@ -1122,6 +1122,7 @@ $$E(g(X,Y)) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}g(x,y)f(x,y) \ud x
  \end{itemize}
 \end{definition}
 \begin{example}
+\label{exampleJointPdf1}
 Define a joint pdf by
 \begin{equation*}
 \begin{array}{lll}
@@ -1231,4 +1232,53 @@ See example 1.24. in \verb#notes.pdf#. %TODO: Should the actual example be here?
 \begin{itemize}
   \item The extension to continuous random variables is given next.
 \end{itemize}
+\begin{definition}
+Let $(X,Y)$ be a continuous random variable with joint pdf $f(x,y)$ and marginal
+pdf's $f_X(x)$ and $f_Y(y)$. For any $x$ such that $f_X(x)>0$, the conditional
+pdf of $Y$ given that $X=x$ is the function of $y$ denoted by $f(y \mid x)$ and
+defined by
+$$f(y \mid x) = \frac{f(x,y)}{f_X(x)}$$
+%TODO: Is the \frac{P(X=x, Y=Y)}{P(X=x)} part needed? In notes 9 page 3.
+For any $y$ such that $f_Y(y) > 0$, the conditional pdf that $Y=y$ is
+$$f(x \mid y) = \frac{f(x,y)}{f_Y(y)}$$
+Computing $\int_{-\infty}^{\infty}f(y \mid x) \ud y$, which will be 1, justifies
+that $f(y \mid x)$ is a pdf.
+\end{definition}
+\begin{example}
+Using the joint pdf form the excercise \ref{exampleJointPdf1}
+\begin{equation*}
+\begin{array}{lll}
+& f(x,y)=6xy^2 & 0 < x < 1 \text{ and } 0 < y < 1 \\
+\text{and} & f(x,y) = 0 & \text{otherwise}
+\end{array}
+\end{equation*}
+Also, the marginal pdf for $X$ is
+$$f_X(x) = 2x$$
+The conditional pdf $f(y \mid X=0)$ is undefined, since then, $f_X(x)=2*0= 0$.
+$$f(y|X=1) = \frac{f(1,y)}{f_X(1)} = \frac{6*1*y^2}{2*1} = 3y^2$$
+This is proper pdf since 
+$$\int_{-\infty}^{\infty}f(y \mid X=1) \ud y 
+= \int_{0}^{1}3y^2 \ud y
+= \big|_{0}^{1}\frac{1}{3}3y^3 = 1-0 = 1$$
+%TODO: Is the plot from notes 9 page 4 needed?
+Corresponding cdf is
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+F_{Y \mid X=1}(y \mid x=1) & = \int_{-\infty}^{y}f_{Y \mid X=1}
+(t \mid x=1) \ud t \\
+& = \int_{0}^{y} 3t^2 \ud t \\
+& = \big|_{0}^{y}t^3 \\
+& = y^3 - 0^3 = y^3
+\end{array}
+\end{equation*}
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+P(Y > 0.5 \mid X=1) & = 1-P(Y \leq 0.5 \mid x=1) \\
+& = 1-F_{Y \mid X=1}(0.5 \mid x=1) \\
+& = 1 - 0.5^3 = \frac{7}{8}
+\end{array}
+\end{equation*}
+\end{example}
 \end{document}
