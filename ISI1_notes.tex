@@ -1245,6 +1245,7 @@ Computing $\int_{-\infty}^{\infty}f(y \mid x) \ud y$, which will be 1, justifies
 that $f(y \mid x)$ is a pdf.
 \end{definition}
 \begin{example}
+\label{exampleConditionalPdf1}
 Using the joint pdf form the excercise \ref{exampleJointPdf1}
 \begin{equation*}
 \begin{array}{lll}
@@ -1281,4 +1282,82 @@ P(Y > 0.5 \mid X=1) & = 1-P(Y \leq 0.5 \mid x=1) \\
 \end{array}
 \end{equation*}
 \end{example}
+\begin{itemize}
+  \item The conditional expected value of $Y$ given that $X=x$ is the expected
+  value based on the conditional distribution:
+  \begin{equation*}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{array}{ll}
+	E(Y \mid X=x) = E(Y \mid x) = \sum_{y \in \mathcal{Y}}y f(y \mid x) & \text{if
+	$y$ is discrete } \\
+	E(Y \mid X=x) = E(Y \mid x) = \int_{-\infty}^{\infty} y f(y \mid x) \ud y &
+	\text{if $y$ is continuous }
+	\end{array}
+  \end{equation*}
+  \item For $g(Y)$ we have correspondingly
+  \begin{equation*}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{array}{ll}
+	E(g(Y) \mid x) = \sum_{y \in \mathcal{Y}}g(y) f(y \mid x) & \text{if
+	$y$ is discrete } \\
+	E(g(Y) \mid x) = \int_{-\infty}^{\infty} g(y) f(y \mid x) \ud y &
+	\text{if $y$ is continuous }
+	\end{array}
+  \end{equation*}
+  \item $E(Y \mid X)$ is ``The best guess of $Y$ we could make given the
+  knowledge on $X$''
+  \item The continuous variance of $Y$ given that $X=x$ is
+  \begin{equation*}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{array}{ll}
+	Var(Y \mid x) & = E\left( \left( Y - E(Y \mid x)\right)^2 \right)\\
+	& = E(Y^2 \mid x) - \left[E(Y \mid x)\right]^2
+	\end{array}
+  \end{equation*}
+\end{itemize}
+\begin{example}
+Using the conditional pdf from example \ref{exampleConditionalPdf1},
+well get following conditional expected value and variance for $Y$ on condition
+that $X=1$ % TODO: or $X \leq 1$?
+\begin{equation*}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{array}{ll}
+	E(Y \mid X=1) & = \int_{-\infty}^{\infty} y f(y \mid X=1) \ud y \\
+	& = \int_{0}^{1} y 3y^2 \ud y \\
+	& = \int_{0}^{1} 3y^3 \ud y = \frac{3}{4} \big|_0^1 y^4 = \frac{3}{4}(1^4-0^4)
+	= \frac{3}{4}
+	\end{array}
+  \end{equation*}
+  
+  \begin{equation*}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{array}{ll}
+	E(Y^2 \mid X=1) & = \int_{-\infty}^{\infty} y^2 f(y \mid X=1) \ud y \\
+	& = \int_{0}^{1} y^2 3y^2 \ud y \\
+	& = \int_{0}^{1} 3y^4 \ud y = \frac{3}{5} \big|_0^1 y^5 = \frac{3}{5}(1^5-0^5)
+	= \frac{3}{5}
+	\end{array}
+  \end{equation*}
+  
+  \begin{equation*}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{array}{ll}
+	Var(Y \mid X=1) & = E(Y^2 \mid X=1) - \left[E(Y \mid X=1)\right]^2 \\
+	& = \frac{3}{5} - \left(\frac{3}{5}\right)^2 \approx 0.0375
+	\end{array}
+  \end{equation*}
+  
+  $$sd(Y \mid x=1) = \sqrt{0.0375} = 0.194$$
+\end{example}
+\begin{theorem}
+Let X and Y be any two random variables. Then
+$$E(X) = E_Y(~\underbrace{E_{X \mid Y}(X \mid Y)}_{g(y)}~)$$
+and
+\beq
+Var(X) = E_Y(~\underbrace{Var_{X \mid Y}(X \mid
+Y)}_\text{function of $Y$, $g(y)$} ~)+Var_Y(~\underbrace{E_{X \mid Y}(X \mid
+Y)}_\text{function of $Y$, $g(y)$}~)
+\eeq
+\textbf{Illustration} See 1.27 in \verb#notes.pdf#.
+\end{theorem}
 \end{document}
