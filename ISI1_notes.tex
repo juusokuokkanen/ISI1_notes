@@ -1360,4 +1360,295 @@ Y)}_\text{function of $Y$, $g(y)$}~)
 \eeq
 \textbf{Illustration} See 1.27 in \verb#notes.pdf#.
 \end{theorem}
+
+\section{Independence}
+\begin{definition}
+Let $(X,Y)$ be a bivariate random variable with joint pdf or pmf $f(x,y)$, and
+marginal pmf's/pdf's $f_X(x)$ and $f_Y(y)$.
+
+$X$ and $Y$ are said to be independent (riippumattomia) random variables if for
+every $x \in \mathcal{X}$ and $y \in \mathcal{Y}$
+$$f(x,y) = f_X(x)f_Y(y)$$
+If $X$ and $Y$ are independent, it follows that
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{lll}
+f(y \mid x) & = \frac{f(x,y)}{f_X(x)} & \text{(by definition of conditional
+pmf/pdf)} \\
+& = \frac{f_X(x)f_Y(y)}{f_X(x)} & \text{(by definition of
+independence)} \\
+& = f_Y(y)
+\end{array}
+\end{equation*}
+regardless of the value of $x$.
+\end{definition}
+\begin{itemize}
+  \item For independent random variables, the marginal distribution of Y is
+  equal to the conditional distribution of $Y \mid x$ for all values of $X$.
+  \item Same holds naturally for the marginal distribution of $X$ and all
+  conditional distributions of $X \mid Y$.
+  %TODO: Several illustrations on notes 10, page 1. Are they needed? If added, add
+  % also the black text bellow them that reffers to them?
+  \item For $X \mid Y=y$, if for some choice of the $y$ the pdf differs, then
+  $X$ and $Y$ are not independent %TODO: Do we need the illustrations to this make
+  % sense?
+  \item For independent random variables, the knowledge of the realized value of
+  $X$ does not provide any information on $Y$, compared to the situation where
+  the value of $X$ is not known.
+\end{itemize}
+\begin{example}
+\label{exampleCheckIndependence1}
+Checking for independence
+
+Assume that $f(x,y)$ is defined as follows:
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{l}
+f(10,1) = f(20,1) = f(20,2) = \frac{1}{10} \\
+f(10,2) = f(10,3) = \frac{1}{5} \\
+f(20,3) = \frac{3}{10}
+\end{array}
+\end{equation*}
+%TODO: Better aligment for the table?
+\begin{table}[h]
+\label{exampleCheckIndependence1Table1}
+\caption{Probabilities for bivariate pmf $f(x,y)$ of example
+\ref{exampleCheckIndependence1}}
+\renewcommand{\arraystretch}{1.4}
+\renewcommand{\tabcolsep}{0.3cm}
+\begin{tabular}{c c|c c c|c}
+&&&$Y$& \\
+&&1&2&3& \\ \hline
+$X$ & 10 & $\frac{1}{10}$ & $\frac{1}{5}$ & $\frac{1}{5}$ &
+$\frac{5}{10} = \frac{1}{2}$ \\
+& 20 & $\frac{1}{10}$ & $\frac{1}{10}$ & $\frac{3}{10}$ & $\frac{5}{10} =
+\frac{1}{2}$ \\ \hline 
+&& $\frac{2}{10}$ & $\frac{3}{10}$ & $\frac{5}{10}$
+\end{tabular}
+\end{table}
+Conditional and marginal probabilities can be seen on table
+\ref{exampleCheckIndependence1Table1}. Consider events $A:~X=10$ and $B:~Y=1$.
+$$P(A \cap B) = \frac{1}{10}$$
+$$P(A)P(B) = \frac{5}{10}*\frac{2}{10} = \frac{1}{10}$$
+Since $P(A \cap B) = P(A)P(B)$, events $A$ and $B$ are independent. Lets then
+consider events $C:~X=10$ and $D:~Y=2$.
+$$P(C \cap D) = \frac{1}{5} = \frac{4}{20} $$
+$$P(C)P(D) = \frac{1}{2}*\frac{3}{10} = \frac{3}{20}$$
+Since $P(C \cap D) \neq P(C)P(D)$, events $C$ and $D$ are not independent, which
+also means that random variables $X$ and $Y$ are not independent.
+\end{example}
+\begin{theorem}
+\label{theoremIndependentRVs}
+Let $X$ and $Y$ be independent random variables.
+\begin{itemize}
+  \item[a)] For any $A \subset \ureal$ and $B \subset \ureal$
+  $$P(X \in A, Y \in B) = P(X \in A)P(Y \in B)$$
+  that is, events $\{X \in A\}$ and $\{Y \in B\}$ are independent.
+  \item[b)] Let $g(x)$ be a function of $x$ only and $h(y)$ is a function of
+  $y$ only, then
+  $$E(g(X)h(Y)) = E(g(X))E(h(Y))~(*)$$
+  and naturally also
+  $$E(XY) = E(X)E(Y)$$
+  which is a special case of $(*)$.
+\end{itemize}
+\end{theorem}
+\section{Covariance and correlation}
+\begin{itemize}
+  \item Measures the strength of the relationship between $X$ and $Y$.
+  Especially, they measure the linear relationship between the two random
+  variables.
+\end{itemize}
+\textbf{Notations}
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+E(X) = \mu_X & E(Y) = \mu_Y \\
+Var(X) = \sigma_X^2 & \rightarrow sd(X) = \sigma_X \\
+Var(Y) = \sigma_Y^2 & \rightarrow sd(Y) = \sigma_Y \\
+\end{array}
+\end{equation*}
+We always assume that $0 < \sigma_X^2 < \infty$ and $0 < \sigma_Y^2
+< \infty$.
+\begin{definition}
+The covariance of $X$ and $Y$ is the number defined by
+$$cov(X,Y) = E((X-\mu_X)(Y-\mu_Y))$$ 
+The correlation of $X$ and $Y$ is the number defined by
+$$\rho_{XY} = \frac{cov(X,Y)}{\sigma_X \sigma_Y}$$
+It can also be called correlation coefficient.
+\end{definition}
+\begin{itemize}
+  \item If large values of $X$ tend to be observed together with large values of
+  $Y$ and small values of $X$ with small values of $Y$, then the product
+  $(X-\mu_X)(Y-\mu_Y)$ tends to get high values, meaning $cov(X,Y) =
+  E((X-\mu_X)(Y-\mu_Y))$ is high and positive.
+  \item If large values of $X$ are associated with low values of $Y$, then the
+  product $(X-\mu_X)(Y-\mu_Y)$ tends to be negative with high absolute values,
+  meaning covariance is negative and has high absolute value.
+  \item Same holds for correlation, because $\sigma_X \sigma_Y$ is always
+  positive and constant.
+  \item The covariance can get any values within $(-\infty, \infty)$, but the
+  correlation is restricted to interval $[-1, 1]$.
+  \item Values $\rho_{XY}=-1$ and $\rho_{XY}=1$ of correlation indicate a
+  perfect linear relationship between $X$ and $Y$, while value $\rho_{XY}=0$ of
+  correlation indicates no linear relationship between $X$ and $Y$
+\end{itemize}
+%TODO: Several plots illurtrating correlation in notes 10 page 4. Are they
+% needed? If added, also add the texts
+\begin{theorem}
+For any random variables $X$ and $Y$
+$$cov(X,Y) = E(XY) - \mu_X \mu_Y$$
+\textbf{Proof}
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+E((X-\mu_X)(Y-\mu_Y)) \\
+=E(XY-\mu_X Y-\mu_Y X + \mu_X \mu_Y) \\
+=E(XY)-E(\mu_X Y)-E(\mu_Y X) + E(\mu_X \mu_Y) & \text{$\mu_X$ and $\mu_Y$ are
+fixed}\\
+=E(XY)-\mu_X \underbrace{\E(Y)}_{\mu_Y}-\mu_Y \underbrace{E(X)}_{\mu_X} + \mu_X
+\mu_Y \\
+=E(XY)-\mu_X \mu_Y-\mu_Y \mu_X + \mu_X \mu_Y  \\
+=E(XY)-\mu_X \mu_Y
+\end{array}
+\end{equation*}
+\textbf{Note} If $\mu_X=0$ or $\mu_Y=0$, then $cov(X,Y) = E(XY)$
+
+\textbf{Note} The covariance of random variable with itself is
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+cov(X,Y) &=E(XX)-E(X)E(X) \\
+&=E(X^2)-(E(X))^2 = Var(X)
+\end{array}
+\end{equation*}
+In that case
+$$corr(X,X) = \frac{cov(X,X)}{\sigma_X \sigma_X} = \frac{Var(X)}{Var(X)} = 1$$
+\end{theorem}
+\begin{example}
+% TODO: This example was little problematic to follow, so check that all ok.
+Let the joint pdf of $(X,Y)$ be
+\begin{equation*} f(x,y) =
+\left\{
+\begin{array}{ll}
+1 & 0<x<1,~x<y<x+1\\
+0 & \text{otherwise}\\
+\end{array} \right.
+\end{equation*}
+The volume under curve $f(x,y)$ is $1 \times 1 \times 1 = 1$
+%TODO: Is the plot needed? Notes 11 page 2.
+%TODO: On notes 11, page 2, reffering to example of linear regression with
+% uniformly distributed residual errors. What example is it?
+The marginal distribution of $X$ is $Uniform(0,1)$. The marginal distribution of
+$Y$ is
+\begin{equation*} f_Y(y) =
+\left\{
+\begin{array}{ll}
+y & \text{if } 0 < y \leq 1 \\
+2 - y & \text{if } 1 < y < 2
+\end{array} \right.
+\end{equation*}
+%TODO: Are the \ldots fine in these examples?
+$$E(Y) = \int_0^2 f_Y(y)dy = \ldots = 1$$
+
+%TODO: Is this variance correct? since later it's different 
+% $$Var(Y) = \ldots =\frac{1}{6}$$
+
+$$E(X) = \frac{0+1}{2} = \frac{1}{2} ~~ (X \sim Unif(0,1))$$
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+E(XY) = \int_0^1 \int_x^{x+1} xy1 \ud y \ud x 
+& = \int_0^1 \big|_x^{x+1} \frac{1}{2} xy^2 \ud x \\
+& = \int_0^1 \frac{1}{2} x(x+1)^2 - \frac{1}{2} xx^3 \ud x \\
+& = \ldots = \int_0^1 x^2 + \frac{1}{2}x \ud x \\
+& = \ldots = \frac{7}{12}
+\end{array}
+\end{equation*}
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+cor(X,Y) & = E(XY) - E(X)E(Y) \\
+& = \frac{7}{12} - \frac{1}{2}*1 \\
+& = \frac{7}{12} - \frac{6}{12} = \frac{1}{12}
+\end{array}
+\end{equation*}
+
+The correlation is %TODO: Variance for X or Y are not specified here. Should
+% they be?
+$$corr(X,Y) = \frac{cov(X,Y)}{\sigma_X \sigma_Y} =
+\frac{1/12}{\sqrt{1/12}\sqrt{1/2}} = \frac{1}{\sqrt{2}}$$
+\end{example}
+
+\begin{theorem}
+If $X$ and $Y$ are independent, then $cov(X,Y)=0$ and $\rho_{XY}=0$.
+
+\textbf{Proof}
+Under independence, theorem \ref{theoremIndependentRVs} holds, meaning $E(XY) =
+E(X)E(Y)$,
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+cov(X,Y) & = E(XY) - E(X)E(Y) \\
+& = E(X)E(Y) - E(X)E(Y) = 0
+\end{array}
+\end{equation*}
+$$\rho_{XY} = \frac{cov(X,Y)}{\sigma_X \sigma_Y}= \frac{0}{\sigma_X
+\sigma_Y} = 0$$
+\end{theorem}
+\begin{theorem}
+Calculating using covariance
+
+If $X$, $Y$ and $U$ are random variables, and $a$ and $b$ are constants,
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+Var(X + Y) & = Var(X) + Var(Y) + 2*cov(X,Y) \\
+Var(X - Y) & = Var(X) + Var(Y) - 2*cov(X,Y) \\
+Var(aX+bY) & = a^2Var(X) + b^2Var(Y) + 2ab*cov(X,Y) \\
+cov(X+Y, U) & = cov(X,U) + cov(Y,U)
+\end{array}
+\end{equation*}
+%TODO: Is the plot needed? Notes 11, page 4.
+If $X$ and $Y$ are independent, then
+$$Var(X+Y)=Var(X)+Var(Y)$$
+\end{theorem}
+\begin{example}
+The variance of sample mean
+
+%TODO: Can we refer to excercises 4 here?
+Let $Y=\frac{1}{n}\sum_{i=1}^n X_i$. We already know from exercises 4, that
+$E(Y)=\frac{1}{n}\sum_{i=1}^n \mu_i$, and if $\mu_i = \mu$ for all $i =
+1,\ldots,n$, $E(Y) = \mu$
+
+If $X_1,\ldots,X_n$ are independent or at least uncorrelated,
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{lll}
+Var(Y) & = Var(\frac{1}{n} \sum X_i) \\
+& = \frac{1}{n^2}Var(\sum X_i) & \text{(uncorrelated random variables)} \\
+& =  \frac{1}{n^2}\sum{Var( X_i)} \\
+& = \frac{1}{n^2} \sum{\sigma_i^2}
+\end{array}
+\end{equation*}
+If $\sigma_i^2 = \sigma^2$ for all $i = 1,\ldots,n$ (the random variables have
+common, constant variance)
+$$= \frac{1}{n^2} n\sigma^2 = \frac{\sigma^2}{n}$$
+$$sd(Y) = \sqrt{Var(Y)} = \frac{\sigma}{\sqrt{n}}$$
+The well known standard error of the mean of an independent sample.
+\textbf{Note} If $X_i$ are independent and identically distributed (i.i.d) and
+$X_i \sim Uniform(l, u)$, we have $Var(X_i) = \frac{1}{12}(u-l)^2$ and 
+$$Var(Y) = \frac{1}{n} Var(X_i) = \frac{1}{n} \frac{1}{12}(u-l)^2 =
+\frac{1}{12n}(u-l)^2$$
+Recall R example \verb#unifmean.R#, where $X_1 \sim Unif(0, 10)$
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+Var(X_1) & = \frac{1}{12}(u-l)^2 =  \frac{1}{12}10^2 = \frac{100}{12} \\
+Var(Y) & = \frac{100/12}{n} \\
+sd(Y) & = \frac{10}{\sqrt{12n}}
+\end{array}
+\end{equation*}
+\end{example}
 \end{document}
