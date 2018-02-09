@@ -1411,9 +1411,9 @@ f(20,3) = \frac{3}{10}
 \end{equation*}
 %TODO: Better aligment for the table?
 \begin{table}[h]
-\label{exampleCheckIndependence1Table1}
 \caption{Probabilities for bivariate pmf $f(x,y)$ of example
 \ref{exampleCheckIndependence1}}
+\label{exampleCheckIndependence1Table1}
 \renewcommand{\arraystretch}{1.4}
 \renewcommand{\tabcolsep}{0.3cm}
 \begin{tabular}{c c|c c c|c}
@@ -1522,7 +1522,7 @@ cov(X,Y) &=E(XX)-E(X)E(X) \\
 \end{array}
 \end{equation*}
 In that case
-$$corr(X,X) = \frac{cov(X,X)}{\sigma_X \sigma_X} = \frac{Var(X)}{Var(X)} = 1$$
+$$cor(X,X) = \frac{cov(X,X)}{\sigma_X \sigma_X} = \frac{Var(X)}{Var(X)} = 1$$
 \end{theorem}
 \begin{example}
 % TODO: This example was little problematic to follow, so check that all ok.
@@ -1569,7 +1569,7 @@ E(XY) = \int_0^1 \int_x^{x+1} xy1 \ud y \ud x
 \begin{equation*}
 \renewcommand{\arraystretch}{1.6}
 \begin{array}{ll}
-cor(X,Y) & = E(XY) - E(X)E(Y) \\
+cov(X,Y) & = E(XY) - E(X)E(Y) \\
 & = \frac{7}{12} - \frac{1}{2}*1 \\
 & = \frac{7}{12} - \frac{6}{12} = \frac{1}{12}
 \end{array}
@@ -1577,7 +1577,7 @@ cor(X,Y) & = E(XY) - E(X)E(Y) \\
 
 The correlation is %TODO: Variance for X or Y are not specified here. Should
 % they be?
-$$corr(X,Y) = \frac{cov(X,Y)}{\sigma_X \sigma_Y} =
+$$cor(X,Y) = \frac{cov(X,Y)}{\sigma_X \sigma_Y} =
 \frac{1/12}{\sqrt{1/12}\sqrt{1/2}} = \frac{1}{\sqrt{2}}$$
 \end{example}
 
@@ -1650,5 +1650,66 @@ Var(Y) & = \frac{100/12}{n} \\
 sd(Y) & = \frac{10}{\sqrt{12n}}
 \end{array}
 \end{equation*}
+\end{example}
+
+\begin{example}
+\label{exampleSpatialData1}
+Spatial data
+Let random variables $X_1$,  $X_2$ and $X_3$ be observed at fixed locations
+$u_1$, $u_2$ and $u_3$:
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{l}
+u_1 = (0,1) \\
+u_2 = (0,0) \\
+u_3 = (2,0)
+\end{array}
+\end{equation*}
+%TODO: There is graph related to the coordinates notes 11, page 6. Is it needed?
+
+Assume that the correlation among $X_i$ is specified by the exponential spatial
+correlation
+$$\rho_{X_i,X_j} = e^{\frac{-S_{ij}}{d}}$$
+where $s_{ij}$ is the spatial distance between locations $u_i$ and $u_j$, and
+$d$ specifies the strength of the spatial correlation. Assume that $d$ is
+known to be $d=2$. Then, the correlations for all the pairs can be seen in the
+table \ref{exampleSpatialData1Table1}.
+
+\begin{table}[h]
+\caption{Correlations between the random variable pairs
+of \ref{exampleSpatialData1}}
+\label{exampleSpatialData1Table1}
+\renewcommand{\arraystretch}{1.4}
+\renewcommand{\tabcolsep}{0.3cm}
+\begin{tabular}{c|c|c}
+Pair & Distance & Correlation \\
+\hline
+1,2 & 1 & 0.61 \\
+1,3 & $\sqrt{5}$ & 0.3 \\
+2,3 & 2 & 0.37 \\
+\hline
+&&$\sum \approx 1.30$
+\end{tabular}
+\end{table}
+Let $Y = \frac{1}{3}(X_1+X_2+X_3)$, $E(X_i) = \mu$, $Var(X_i) = \sigma^2$ and
+$E(Y) = \mu $. Then, the variance of $Y$ can be computed as
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+Var(Y) & = \frac{1}{n^2}Var(X_1+X_2+X_3) \\
+& = \frac{1}{n^2}\left[Var(X_1+X_2) + Var(X_3) + 2cov(X_1+X_2,X_3)\right] \\
+& = \frac{1}{n^2}\left[Var(X_1)+Var(X_2) + 2cov(X_1,X_2) + Var(X_3) +
+2cov(X_1,X_3)+2cov(X_2,X_3)\right] \\
+&=\frac{1}{n^2}\left[\underbrace{\sum Var(X_i))}_{3\sigma^2} + 2 \sum_{i<j}
+\underbrace{cov(X_i, X_j)}_{\sigma\sigma\rho_{X_i,X_j}}\right] \\
+& =
+\frac{1}{3^2}*3\sigma^2+\frac{2\sigma^2}{3^2}(cor(X_1,X_2)+cor(X_1,X_3)+cor(X_2,X_3))\\
+&=\sigma^2(\frac{1}{3}+\frac{2}{9}*1.30) = \underbrace{0.62}_{<1}\sigma^2
+\end{array}
+\end{equation*}
+If the random variables would be uncorrelated and $n=3$, we would have had
+$$Var(Y) = \frac{1}{3}\sigma^2 \approx 0.33\sigma^2$$
+If $n$ were 2, we would have had
+$$Var(Y) = \frac{1}{2}\sigma^2 = 0.5\sigma^2$$
 \end{example}
 \end{document}
