@@ -38,6 +38,8 @@
 \usepackage{times}
 %\usepackage[T1]{fontenc}
 
+%\usepackage{breqn} % Helps with multline \left \right problems.
+
 \newcommand{\foldPath}{c:/laurim/tex/}
 
 \newcommand{\beq}{\begin{equation*}}
@@ -1712,4 +1714,155 @@ $$Var(Y) = \frac{1}{3}\sigma^2 \approx 0.33\sigma^2$$
 If $n$ were 2, we would have had
 $$Var(Y) = \frac{1}{2}\sigma^2 = 0.5\sigma^2$$
 \end{example}
+\section{Bivariate normal distribution}
+\begin{itemize}
+  \item If we have dependent data of size $n$, we cannot thik it as $n$
+  (independent) replicates of a random variable $X$, but as a single replicate
+  of a $n$-variate random vector.
+  \begin{itemize}
+    \item We need to define $n$-variate distribution
+    \item We need to extend the ideas we have presented for bivariate case to
+    $n$-variate case.
+    \end{itemize}
+  \item The most commonly used $n$-variate distribution is multivariate normal
+  distribution.
+  % \item To understand its properties, we spend this lecture with the bivariate
+  % normal distribution. 
+  % TODO: Is the commented out item needed?
+  \end{itemize}
+\begin{definition}
+Let $-\infty < \mu_X < \infty$, $-\infty < \mu_Y < \infty$, $\sigma_X > 0$,
+$\sigma_Y > 0$, $-1 < \rho < 1$ be real numbers.
+
+The bivariate normal pdf with (marginal) means $\mu_X$ and $\mu_Y$, (marginal)
+variances $\sigma_X^2$ and $\sigma_Y^2$ and correlation $\rho$ is the bivariate
+pdf given by
+%TODO: How tp write this propely? Quite long so does not fit into one line.
+% Using break \\ between \left and \right parts breaks the \right ones.
+\begin{equation*}
+\resizebox{1.0 \textwidth}{!} 
+{
+$
+f(x,y) = \left( 2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2} \right)^{-1}
+exp \left \{ -\frac{1}{2(1-\rho^2)}
+\left[ \left( \frac{x-\mu_X}{\sigma_X} \right)^2-2\rho
+\left( \frac{x-\mu_X}{\sigma_X} \right)
+\left( \frac{y-\mu_Y}{\sigma_y} \right)
++\left( \frac{y-\mu_Y}{\sigma_Y} \right)^2 \right ] \right \}
+$
+}
+\end{equation*}
+
+for $-\infty < x < \infty$ and $-\infty < y < \infty$
+
+\end{definition}
+
+\begin{example}
+\label{exampleBivariateNormalDistribution1}
+$\mu_X = 10$, $\mu_Y = 5$, $\sigma_X = 5$, $\sigma_Y = 2$ and $\rho = 0$.
+%TODO: There are several plots in the notes 12 page 2. Are they needed?
+
+% TODO: Merginal mean Y \mid x ? Or is it conditional mean?
+Because in this case $\rho = 0$, the marginal mean of $Y \mid x$ is equal to
+$E(Y)$, and the conditional variance of $Y \mid x$ is equal to $Var(Y \mid x)$.
+\end{example}
+\begin{itemize}
+  \item Because both marginal and conditional distributions are univariate
+  normals, the marginal distributions are therefore the same as the conditional
+  ones, meaning the two random variables are independent.
+  \item The equation looks complex, but it can be presented nicely in matrix
+  form that covers implicitly the extension to multivariate form. %TODO: Is this
+  % correct?
+  \item Also called multivariate Gaussian density.
+  \item Basis for the wide class of statistical models and limiting distribution
+  of parameter estimates in many cases as the sample size increases.
+  \begin{itemize}
+    \item Normality of $e_i$ in the linear refression model $y_i = \beta_0 +
+    \beta_1 x_i + e_i$ leads to bivariate normality of $\hat{\beta_0}$ and
+    $\hat{\beta_1}$ in small samples.
+    \item Asymptotic distribution of $(\hat{\beta_0},\hat{\beta_1})$ in the
+    linear regression regarless of the distribtuion of $e_i$, as the sample size
+    $\rightarrow \infty$. The convergence is quite fast, if the distribution of
+    $e_i$ is not too different from the normal distribution, and the variance
+    $Var(e_i)$ is constant over the range of $x$.
+    \item It is a limit distribution (as $n \rightarrow \infty$) of parameter
+    estimates in a wide class of statistical models: multiple linear regression,
+    generalized linear models, mixed-effect models ect. In general, all models
+    where parameters are estimated using maximum likelihood.
+    \item Starting assumption in Factor analysis, and model based geostatistics,
+    Gaussian mixture models, model-based time-series analysis ect.
+  \end{itemize}
+  \item The bivariate normal density is an intermediate step to the more general
+  multivariate normal distribution!
+\end{itemize}
+\section{Properties of the bivariate normal distribution}
+\begin{itemize}
+  \item The marginal distribution of $X$ is $N(\mu_X, \sigma_X^2)$.
+  \item The marginal distribution of $Y$ is $N(\mu_Y, \sigma_Y^2)$.
+  \item The correlation between $X$ and $Y$ is $\rho_{XY} = \rho$.
+  \item For any constant $a$ and $b$, the distribution of $aX + bY$ is
+  $$N\left( a\mu_X+b\mu_Y, a^2\sigma_X^2 + b^2\sigma_Y^2 +
+  2ab\rho\sigma_X\sigma_Y \right)$$ 
+  %TODO: Are a^2 and b^2 correct? On notes were just a and b, but is that is not
+  % in line with the rule for the variance with constant. (seen bellow)
+  \begin{itemize}
+    \item Recall:
+    \begin{equation*}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{array}{l}
+	E(aX+bY) = aE(X)+bE(Y) \\
+	Var(aX+bY) = a^2 Var(X) + b^2 Var(Y) + 2abcov(X,Y)
+	\end{array}
+	\end{equation*}
+	for $X$ and $Y$ regardless of their distribution, meaning it also holds
+  for the normally distributed ones.
+  \end{itemize}
+  \item The conditional distributions of $X \mid y$ and $Y \mid x$ are also
+  normal. The expected value and variance
+  	\begin{equation*}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{array}{l}
+	E(Y \mid x) = \mu_Y + \rho \frac{\sigma_Y}{\sigma_X}(x-\mu_X) \\
+	Var(Y \mid x) = \sigma_Y^2(1-\rho^2)
+	\end{array}
+	\end{equation*}
+	\begin{itemize}
+	  \item Recall the example \ref{exampleBivariateNormalDistribution1} where
+	  $\rho = 0$. In that case
+	  	\begin{equation*}
+		\renewcommand{\arraystretch}{1.6}
+		\begin{array}{l}
+		E(Y \mid x) = \mu_Y + 0*\frac{\sigma_Y}{\sigma_X}(x-\mu_X) = \mu_Y \\
+		Var(Y \mid x) = \sigma_Y^2(1-0^2) =  \sigma_Y^2
+		\end{array}
+		\end{equation*}
+	\end{itemize}
+\end{itemize}
+
+\textbf{Note } The conditional expected value $E(Y \mid x)$ is related to $x$
+linearly
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+E(Y \mid x) & =
+\mu_Y + \frac{\rho\sigma_Y}{\sigma_X}x-\frac{\rho\sigma_Y}{\sigma_X}\mu_X \\
+& = \underbrace{\mu_Y-\frac{\rho\sigma_Y}{\sigma_X}\mu_X}_{\text{Constant a}} +
+\underbrace{\frac{\rho\sigma_Y}{\sigma_X}}_{\text{Constant b}}x
+\\
+& = a + bx
+\end{array}
+\end{equation*}
+%TODO: Is the above correct? Original notes was missing \mu_X in second row, but
+% I don't think it should have been vanished anywhere.
+
+\textbf{Note } Conditional variance $Var(Y \mid x) = \sigma_Y^2(1-\rho^2)$ does
+not include $x$, meaning it's constant over the range of $x$
+
+\begin{itemize}
+  \item Dependency of $Y$ on $x$ occurs only through the mean $E(Y \mid x)$,
+  which is linear in $x$.
+  \item Correlation, which means linear association between $X$ and $Y$,
+  completely describes the dependency of $X$ and $Y$.
+  \item Correlation 0 implies also independence under bivariate normality.
+\end{itemize}
 \end{document}
