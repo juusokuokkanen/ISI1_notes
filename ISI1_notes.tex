@@ -1865,4 +1865,144 @@ not include $x$, meaning it's constant over the range of $x$
   completely describes the dependency of $X$ and $Y$.
   \item Correlation 0 implies also independence under bivariate normality.
 \end{itemize}
+
+%TODO: If stuff from notes 14 pages 4-6 needed, add here
+%TODO: If stuff from notes 15 page 7 needed, add here. Also, add then the
+% notes 16 page 1 example (since notes 15 page 7 speaks about OLs estimation,
+% and there is example about it in notes 16 page 1)
+
+\chapter{Multivariate distributions}
+\begin{itemize}
+\item We extend the bivariate random variables to the n-dimensional case.
+
+\textbf{Note} In this section, we do not make the difference between random
+variable and its realizations when speaking about random vectors. That is,
+$\bm y$ may be a random variable even though it is not capitalized.
+
+\item The joint pdf for a continuous random variable $\bm x_{n \times 1}$ is
+defined by $f(\bm x)$ in the integral
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+P(\bm x \in A) &  = \int \ldots \int_{A} f(\bm x \ud \bm x) \\
+& = \int \ldots \int_{A} f(x_1, x_2, \ldots , x_n) \ud x_1 \ldots \ud x_n
+\end{array}
+\end{equation*}
+where $A$ is n-dimensional set.
+\item For a discrete random variables, this is defined
+correspondingly by replacing integrals with sums.
+\item The expected value of $g(\bm x)$
+$$E\left[g(\bm x)\right] = \int_{-\infty}^{\infty} \ldots
+\int_{-\infty}^{\infty} g(\bm x) f(\bm x) \ud \bm x$$ 
+%TODO: The x in dx should be a vector? Was not on notes, but in earlier integram
+% was.
+and
+$$E\left[g(\bm x)\right] = \sum_{\bm x \in \ureal^n}g(\bm
+x) f(\bm x)$$
+\item The marginal pmf/pdf for any set of elements of $\bm x$ is computed by
+summing or integrating $f(\bm x)$ over all other elements of $\bm x$.
+ $$ f(x_1,\ldots, x_k)= \int_{-\infty}^{\infty} \ldots
+\int_{-\infty}^{\infty} f(x_1, x_2, \ldots , x_n) \ud x_{k+1} \ldots \ud x_n$$
+or
+ $$ f(x_1,\ldots, x_k)= \sum_{x_{k+1},\ldots,x_n \in \ureal^{n-k}} f(x_1, x_2,
+ \ldots , x_n)$$
+ \item The conditional pdf/pmf of $x_{k+1},\ldots,x_n$ conditional on
+ $x_1,\ldots,x_k$ is
+ $$f(x_{k+1},\ldots,x_n \mid x_1,\ldots,x_k) =
+ \frac{f(x_1,\ldots,x_n)}{f(x_1,\ldots,x_k)}$$
+\end{itemize}
+\section{Multivariate normal distribution}
+\begin{itemize}
+\item Consider a random variable $\bm x$ of length $n$. It is said to follow the
+multivariate normal distribution, if the density is
+$$f(\bm x \mid \bm \mu, \bm \Sigma) = \frac{1}{\sqrt{(2\pi)^n}} |\bm
+\Sigma|^{-\frac{1}{2}}e^{-\frac{1}{2}(\bm x - \bm \mu)'\bm \Sigma^{-1}(\bm x -
+\bm \mu)}$$
+where $\bm \mu = \left[ E(\bm x)\right]_{n \times 1}$ and $\bm \Sigma \left[
+Var(\bm x)\right]_{n \times n}$
+
+\item If the parameters $\bm \mu$ and $\bm \Sigma$ were written using scalar
+notations, they would include
+\begin{itemize}
+  \item $n$ expected values, one for each element of $\bm x$ (in $\bm \mu$).
+  \item $n$ variances (from the diagonal of $\bm \Sigma$), one for each elements
+  of $\bm x$.
+  \item $(n-1)+(n-2)+\ldots+1 = \frac{n(n-1)}{2}$ covariances, one for each pair
+  $(x_i, x_j)$
+  %TODO: Illustation of variance-covariance matrix in notes 16 page 4, is it
+  % needed?
+\end{itemize}
+\item In practice, we make some restrictions to the parameters
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{lll}
+\text{E.g.} & E(X_i) = \mu & \text{for all } i \\
+& Var(X_i) = \sigma^2 & \text{for all } i \\
+\text{or} & Var(X_i) = \sigma^2\left[E(X)\right]^\delta & \text{where $\delta$
+is some power parameter} \\ % TODO: Is the delta thing right? Was said so on
+% video, not on notes.
+\text{and} & cov(X_i, X_j) = \sigma^2e^{\frac{-S_{ij}}{\delta}} & \text{in
+spatial data} \\
+\text{or} & cov(X_i, X_j) = \rho & \text{if $X_i$ and $X_j$ belong to a same
+group in grouped data} \\
+\text{or} & cov(X_i, X_j) = \sigma^2 \phi^{|i-j|} & \text{in time series data
+($AR(1)$)}
+\end{array}
+\end{equation*}
+\item Lets consider the following partition of the normally distributed random
+vector $\bm x$:
+\begin{equation*}
+\begin{array}{ll}
+\bm x =
+\begin{bmatrix}
+\bm x_1 \\ \bm x_2
+\end{bmatrix} =
+\begin{bmatrix}
+X_1 \\ X_2 \\ \vdots \\ X_k \\ X_{k+1} \\ \vdots \\ X_n
+\end{bmatrix} & \text{where } 
+\bm x_1 = 
+\begin{bmatrix}
+X_1 \\ X_2 \\ \vdots \\ X_k
+\end{bmatrix}
+\text{ and }
+\bm x_2 =
+\begin{bmatrix}
+X_{k+1} \\ \vdots \\ X_n
+\end{bmatrix}
+\end{array}
+\end{equation*}
+Now
+\begin{equation*}
+\begin{array}{l}
+E(\bm x) = 
+\begin{bmatrix}
+\bm \mu_1 \\ \bm \mu_2
+\end{bmatrix} =
+\begin{bmatrix}
+E(\bm x_1) \\ E(\bm x_2)
+\end{bmatrix} \\
+\\
+\bm \Sigma = 
+\begin{bmatrix}
+Var(\bm x_1)_{k \times k} & cov(\bm x_1, \bm x_2')_{k \times (n-k)} \\ 
+cov(\bm x_2, \bm x_1')_{(n-k) \times k}& Var(\bm x_2)_{(n-k) \times (n-k)}
+\end{bmatrix}_{n \times n } =
+\begin{bmatrix}
+\bm \Sigma_1 & \bm \Sigma_{12} \\
+\bm \Sigma_{21} & \bm \Sigma_2
+\end{bmatrix}
+\end{array}
+\end{equation*}
+%TODO: All correct here? (especially the covariances)
+The conditional expected value and variance of $\bm x_1$ given $\bm x_2$ are
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{l}
+E(\bm x_1 \mid \bm x_2) = \bm \mu_1 + \bm \Sigma_{12} \bm \Sigma_2^{-1}(\bm x_2
+- \bm \mu_2) \\
+Var(\bm x_1 \mid \bm x_2) = \bm \Sigma_{1} - \bm \Sigma_{12} \bm \Sigma_{2}^{-1}
+\bm \Sigma_{21}
+\end{array}
+\end{equation*}
+\end{itemize}
 \end{document}
