@@ -1867,6 +1867,256 @@ not include $x$, meaning it's constant over the range of $x$
 \end{itemize}
 
 %TODO: If stuff from notes 14 pages 4-6 needed, add here
+\chapter{Matrix and vector notations in statistics}
+\begin{example}
+Single predictor regression
+
+Consider model
+$$y_i = \beta_0 + \beta_1 x_i + e_i \text{ , where }i=1,\ldots,n$$
+Lets define the following matrices and vectors.
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{llll}
+
+\bm y_{n \times 1} = 
+\begin{bmatrix}
+y_1 \\ y_2 \\ \vdots \\ y_n
+\end{bmatrix}, & 
+
+\bm X_{n \times 2} = 
+\begin{bmatrix}
+1 & x_1 \\ 1 & x_2 \\ \vdots & \vdots \\ 1 & x_n
+\end{bmatrix}, &
+
+\bm \beta_{2 \times 1} = 
+\begin{bmatrix}
+\beta_0 \\ \beta_1
+\end{bmatrix}, & 
+
+\bm e_{n \times 1} = 
+\begin{bmatrix}
+e_1 \\ e_2 \\ \vdots \\ e_n
+\end{bmatrix}
+
+\end{array}
+\end{equation*}
+The model for whole data can be written as
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{c}
+\bm y = \bm X \bm \beta + \bm e \\ \\
+
+\begin{bmatrix}
+y_1 \\ y_2 \\ y_3 \\ \vdots \\ y_n
+\end{bmatrix}_{n \times 1} = 
+ 
+\begin{bmatrix}
+1 & x_1 \\ 1 & x_2 \\ 1 & x_3 \\ \vdots & \vdots \\ 1 & x_n
+\end{bmatrix}_{n \times 2}
+
+\begin{bmatrix}
+\beta_0 \\ \beta_1
+\end{bmatrix}_{2 \times 1} +
+
+\begin{bmatrix}
+e_1 \\ e_2 \\ e_3 \\ \vdots \\ e_n
+\end{bmatrix}_{n \times 1} \\ \\
+
+\begin{bmatrix}
+y_1 \\ y_2 \\ y_3 \\ \vdots \\ y_n
+\end{bmatrix}_{n \times 1} = 
+ 
+\begin{bmatrix}
+1*\beta_0+x_1\beta_1 \\ 1*\beta_0+x_2\beta_1 \\ 1*\beta_0+x_3\beta_1 \\ \vdots
+\\
+1*\beta_0+x_n\beta_1
+\end{bmatrix}_{n \times 1} +
+
+\begin{bmatrix}
+e_1 \\ e_2 \\ e_3 \\ \vdots \\ e_n
+\end{bmatrix}_{n \times 1} \\ \\
+
+
+\begin{bmatrix}
+y_1 \\ y_2 \\ y_3 \\ \vdots \\ y_n
+\end{bmatrix}_{n \times 1} = 
+ 
+\begin{bmatrix}
+1*\beta_0+x_1\beta_1+e_1 \\ 1*\beta_0+x_2\beta_1+e_2 \\ 1*\beta_0+x_3\beta_1+e_3
+\\
+\vdots
+\\
+1*\beta_0+x_n\beta_1+e_n
+\end{bmatrix}_{n \times 1}
+
+
+\end{array}
+\end{equation*}
+
+\textbf{Note} This extends easily to multiple regression, e.g. for the model
+with two predictors $x_i$ and $z_i$
+
+$$y_i = \beta_0 + \beta_1 x_i + \beta_2 z_i + e_i \text{ , where }i=1,\ldots,n$$
+
+Then,
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{llll}
+
+\bm X_{n \times 3} = 
+\begin{bmatrix}
+1 & x_1 & z_1 \\ 1 & x_2 & z_2 \\ \vdots & \vdots & \vdots\\ 1 & x_n & z_n
+\end{bmatrix}, &
+
+\bm \beta_{3 \times 1} = 
+\begin{bmatrix}
+\beta_0 \\ \beta_1 \\ \beta_2
+\end{bmatrix}, & 
+
+\end{array}
+\end{equation*}
+
+\end{example}
+
+\section{Random vector}
+
+Consider random variables $X_1, X_2, \ldots, X_n$. A random vector is the vector
+of univariate random variables.
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+
+\bm x = 
+\begin{bmatrix}
+X_1 \\ X_2 \\ \vdots \\ X_n
+\end{bmatrix}, &
+
+E(\bm x) = 
+\begin{bmatrix}
+E(X_1) \\ E(X_2) \\ \vdots \\ E(X_n)
+\end{bmatrix}
+
+\end{array}
+\end{equation*}
+
+The variance of a random vector is $n \times n$ symmetric matrix called
+variance-covariance matrix.
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{l}
+
+Var(\bm x)_{n \times n} = 
+\begin{bmatrix}
+Var(X_1) & cov(X_1, X_2) & cov(X_1, X_3) & \hdots & cov(X_1, X_n) \\
+cov(X_2, X_1) & Var(X_2) & cov(X_2, X_3) & \hdots & cov(X_2, X_n) \\
+cov(X_3, X_1) & cov(X_3, X_2) & Var(X_3) & \hdots & cov(X_3, X_n) \\
+\vdots & \vdots & \vdots & \ddots  & \vdots \\
+cov(X_n, X_1) & cov(X_n, X_2) & cov(X_n, X_3) & \hdots & Var(X_n) \\
+\end{bmatrix}
+
+\end{array}
+\end{equation*}
+
+\textbf{Note} Because $cov(X_1, X_2) = cov(X_2, X_1)$, the variance-covariance
+matrix is symmetric, meaning $[Var(\bm x)]' = Var(\bm x)$
+
+\textbf{Note} Because $Var(X) = cov(X,X)$, 
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{l}
+
+Var(\bm x)_{n \times n} = 
+\begin{bmatrix}
+cov(X_1, X_1) & cov(X_1, X_2) & cov(X_1, X_3) & \hdots & cov(X_1, X_n) \\
+cov(X_2, X_1) & cov(X_2, X_2) & cov(X_2, X_3) & \hdots & cov(X_2, X_n) \\
+cov(X_3, X_1) & cov(X_3, X_2) & cov(X_3, X_3) & \hdots & cov(X_3, X_n) \\
+\vdots & \vdots & \vdots & \ddots  & \vdots \\
+cov(X_n, X_1) & cov(X_n, X_2) & cov(X_n, X_3) & \hdots & cov(X_n, X_n) \\
+\end{bmatrix}
+
+\end{array}
+\end{equation*}
+
+Consider two random vectors $\bm x_{1 \times p}$ and $\bm y_{1 \times q}$. The
+covariance between them is $p \times q$ matrix (not a square matrix unless $p
+= q$)
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{l}
+
+cov(\bm x, \bm y)_{p \times q} = 
+\begin{bmatrix}
+cov(X_1, Y_1) & cov(X_1, Y_2) & \hdots & cov(X_1, Y_q) \\
+cov(X_2, Y_1) & cov(X_2, Y_2) & \hdots & cov(X_2, Y_q) \\
+\vdots & \vdots & \ddots  & \vdots \\
+cov(X_p, X_1) & cov(X_p, X_2) & \hdots & cov(X_n, X_q) \\
+\end{bmatrix}
+
+\end{array}
+\end{equation*}
+
+\begin{example}
+Recall example \ref{exampleSpatialData1} on spatial data at 3 locations:
+$(1,0)$, $(0,0)$ and $(0,2)$, and $\rho_{X_iX_j}=e^\frac{-s_{ij}}{2}$
+
+On table \ref{exampleSpatialData1Table1}, we calculated the correlations
+$\rho_{X_iX_j}$ between the pairs $(i, j)$. We also assumed, that $E(X_i) = \mu$
+and $Var(X_i) = \sigma^2$ for all i.
+
+If we place the random variables into random vector $\bm x$
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{c}
+
+\bm x = 
+\begin{bmatrix}
+X_1 \\ X_2 \\ X_3
+\end{bmatrix}
+
+\end{array}
+\end{equation*}
+
+then, the expected value and variance of random vector $\bm x$ are
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+
+E(\bm x) = 
+\begin{bmatrix}
+\mu \\ \mu \\ \mu
+\end{bmatrix} &
+
+Var(\bm x) = \sigma^2
+
+\begin{bmatrix}
+1 & 0.61 & 0.3 \\
+0.61 & 1 & 0.37 \\
+0.3 & 0.37 & 1
+\end{bmatrix} = 
+
+\begin{bmatrix}
+\sigma^2 & \sigma^2*0.61 & \sigma^2*0.3 \\
+\sigma^2*0.61 & \sigma^2 & \sigma^2*0.37 \\
+\sigma^2*0.3 & \sigma^2*0.37 & \sigma^2
+\end{bmatrix}
+\end{array}
+\end{equation*}
+
+Covariance terms inside the variance-covariance matrix are calculated by using
+following
+$$cov(X_i, X_j) = \rho_{X_i X_j} \underbrace{sd(X_i)}_\sigma
+\underbrace{sd(X_j)}_\sigma = \rho_{X_i X_j} \sigma^2$$
+\end{example}
+
 %TODO: If stuff from notes 15 page 7 needed, add here. Also, add then the
 % notes 16 page 1 example (since notes 15 page 7 speaks about OLs estimation,
 % and there is example about it in notes 16 page 1)
@@ -2005,4 +2255,5 @@ Var(\bm x_1 \mid \bm x_2) = \bm \Sigma_{1} - \bm \Sigma_{12} \bm \Sigma_{2}^{-1}
 \end{array}
 \end{equation*}
 \end{itemize}
+%TODO: Add the last example from page 5 of notes 16.
 \end{document}
