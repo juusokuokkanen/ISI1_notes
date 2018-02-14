@@ -122,7 +122,7 @@
     of all individuals.
   \end{itemize}
   \item We also may want to estimate how accurately we finally estimated $p$
-  writing the available data
+  using the available data
   \item The theoretical process that generates the data is called
   \begin{itemize}
     \item Statistical model  or (tilastollinen malli)
@@ -203,8 +203,8 @@ Events $A$ and $B$ are said to be disjoint (erillisi\"a), if
 $$A \cap B = \emptyset$$
 Number of events $A_1$, $A_2$, $A_3$, \ldots are said to be pairwise disjoint,
 if
-$$A_i \cap A_j = \emptyset$$
-for all pairs of i, j. In addition, if $\bigcup_{i=1}^{\infty}A_i = S$,
+$$A_i \cap A_j = \emptyset \text{,  for all pairs of } i, j$$
+In addition, if $\bigcup_{i=1}^{\infty}A_i = S$,
 then $A_1$, $A_2$, $A_3$, \ldots defines a partition of the sample space.
 \end{example}
 \begin{example}
@@ -217,8 +217,8 @@ are pairwise disjoint. Also, since $$\bigcup_{i=1}^{3} = A_1 \cup A_2 \cup A_3 =
 \{\heartsuit , \diamondsuit , \clubsuit, \spadesuit\} = S$$
 they are also partition of S.
 \end{example}
-% TODO: Do we something about the dice example? In pdf notes, just example of
-% sample space of dice throw experiment, and how it is numerated. {1,2,3,4,5,6}
+% TODO: Do we say something about the dice example? In pdf notes, just example
+% of sample space of dice throw experiment, and how it is numerated. {1,2,3,4,5,6}
 \begin{definition}
 Probability (todennäköisyys)
 
@@ -239,8 +239,8 @@ Axioms of probability
 \end{itemize}
 \end{theorem}
 \begin{example}
-%TODO: There were some diagrams related to these examples, that are not yet
-% added. Should they be?
+%TODO: There were some diagrams related to these examples, in notes 2 page 5
+% that are not yet added. Should they be?
 Assume we have two events $A_1$, $X \in A_1$ and $A_2$, $X \in A_2$, which have
 probabilities $P(A_1) = 0.2$ and $P(A_2) = 0.3$.
 
@@ -258,11 +258,12 @@ $$P(A_1 \cup A_2) \neq P(A_1) + P(A_2) = 0.2 + 0.3 = 0.5$$
 In a fair deck, define events $$A_1 = \{\heartsuit\}, A_2 = \{\diamondsuit\},
 A_3 = \{\clubsuit\}, A_4 = \{\spadesuit\}$$which have probabilities
 $$P(A_1) = P(A_2) = P(A_3) = P(A_4) = 1/4$$
-Events $A_1 \ldots A_4$ are disjoint. Therefor,
+Events $A_1 \ldots A_4$ are disjoint. Therefore,
 $$B = A_1 \cup A_2 = \{\heartsuit, \diamondsuit\}$$
 $$P(B) = P(A_1 \cup A_2) = P(A_1) + P(A_2) = 1/4 + 1/4 = 1/2$$
 \end{example}
 \begin{theorem}
+\label{Theorem2}
 Consider events A and B
 \begin{itemize}
   \item[1.]$P(A^c) = 1 - P(A)$
@@ -283,25 +284,25 @@ $$P(A \cap B) \geq P(A) + P(B)-1$$
 Supose $A$ and $B$ are two events that occur with probability $P(A) = P(B) =
 0.975$. Then $P(A \cap B) = 0.975 + 0.975 - 1 = 0.95\ldots$ 
 
-
-\label{Theorem2}
 \end{theorem}
 \begin{theorem}
 \begin{itemize}
-  \item[a)] $P(A) = \sum_{i=1}^{\infty} P(A \cap C)$ for any partition
+  \item[a)] $P(A) = \sum_{i=1}^{\infty} P(A \cap C_i)$ for any partition
   $C_1, C_2, \ldots$
   \item[b)]$P(\bigcup_{i=1}^{\infty}A_i) \leq \sum_{i=1}^{\infty}P(A_i)$, for
   any sets $A_1, A_2, \ldots$
 \end{itemize}
 \end{theorem}
 \begin{definition}
-IF $A$ and $B$ are events in a sample space $S$ and $P(B) > 0$, then
+If $A$ and $B$ are events in a sample space $S$ and $P(B) > 0$, then
 conditional probability (ehdollinen todenn\"akoisyys) of $A$ given $B$ is
 $$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$$
 \end{definition}
 \begin{example}
 \label{clinicalExample1}
-Clinical trial. Assume  that we know the probabilities that are represented in
+Clinical trial. 
+
+Assume  that we know the probabilities that are represented in
 table \ref{probTable1}.
 Let event $A$ be the event ``the patient recovered'' with sample space $S =
 \{ ``OK", ``NOT~OK"\}$, and event B is the event ``The patient was treated
@@ -333,16 +334,13 @@ Total & 0.267 & 0.253 & 0.253 & 0.227 & 1.000 \\
 %TODO: Can equations here be done more better?
 Bayes rule
 
-Assuming we have event $A$ and $B$,
+Assuming we have event $A$ and $B$, and if $P(B) > 0$ 
 $$P(A|B) = \frac{P(A \cap B)}{P(B)} ~~\|* P(B)$$
-if $P(B) > 0$
 $$P(A \cap B) = P(B)P(A|B)$$
-
-And the other way around
+And the other way around, if $P(A) > 0$
 $$P(B|A) = \frac{P(B \cap A)}{P(A)} = \frac{P(A \cap B)}{P(A)} ~~\|* P(A)$$
-if $P(A) > 0$
 $$P(A \cap B) = P(A)P(B|A)$$
-and by using the earlier $P(A \cap B) = P(B)P(A|B)$
+By using the earlier $P(A \cap B) = P(B)P(A|B)$
 $$P(B)P(A|B) = P(A)P(B|A) ~~\|: P(B)$$
 $$P(A|B) = \frac{P(A)P(B|A)}{P(B)}$$
 This is known as Bayes rule.
@@ -434,10 +432,10 @@ X_2 = \left\{
 \end{tabular}
 \end{centering}
 \end{table}
-The probability function of the original sample space is defined ot the RV as
+The probability function of the original sample space is defined for the RV as
 follows:
 
-Consider the sample space $S = {S_1, S_2, \ldots ,S_n}$, and has probability
+Consider the sample space $S = \{S_1, S_2, \ldots ,S_n\}$, and has probability
 function P. Define RV $X$ with sample space / range / support set
 $$ \mathcal{X} = \{x_1, x_2, \ldots , x_n \}$$ 
 % TODO: Is mathcal font good to use with RV supports?.
@@ -506,6 +504,7 @@ F_X(x) = P_X(X \leq x)~\text{for all $x$}
 Tossing of 3 coins. Random variable $X$ = the \# of heads. Cumulative
 distribution function for RV $X$ can be defined as
 \begin{equation*}
+\renewcommand{\arraystretch}{1.3}
 F_X(x) = \left\{
 \begin{array}{rll}
 0 & \text{if } -\infty < x < 0 & x \in (-\infty, 0) \\
@@ -520,8 +519,8 @@ F_X(x) = \left\{
 \textbf{Notes}
 \begin{itemize}
   \item[-] $F_X(x)$ is defined for all $x$!
-  %TODO: If the plot for cdf is added, here is additional note.
-  %\item[-] $F_X(x) has jumps at x_i \in \chi$. The jumps equal to P(X=x_i).
+  \item[-] $F_X(x)$ has jumps at $x_i \in \mathcal{X} $. The jumps equal to
+  $P(X=x_i)$.
   \item[-] $F_X(x) = 0$ for $x < 0$ and $F_X(x) = 1$ for $x \geq 3$.
   \item[-] $F_X(x)$ is right-continuous: the value of $F_X(x)$ at the jump is
   the one we get by approaching the jump from the right.
@@ -547,9 +546,9 @@ Function $F(x)$ is a cdf if and only if the following conditions hold:
 \end{itemize}
 \begin{theorem}
 A random variable $X$ is said to be continuous, if $F_X(x)$ is a continuous
-function of x (meaning the function foes hot have jumps).
+function of $x$ (meaning the function does hot have jumps).
 \end{theorem}
-\textbf{Note} The $X$ in example \ref{exampleThreeCoinToss} was discrete.
+\textbf{Note} The $X$ in example \ref{exampleThreeCoinToss} is discrete.
 \end{example}
 \begin{example}
 \label{exampleUniformDistribution1}
@@ -667,8 +666,8 @@ which has support $(-\infty, \infty)$, and pdf
 $$f(x; \mu, \sigma) =
 \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},~-\infty < \mu <
 \infty,~\sigma > 0$$
-If $\mu = 0$ and $\sigma = 1$, then function is called standard normal density
-(standardoitu normaali jakauma).
+If $\mu = 0$ and $\sigma = 1$, then function is called the standard normal
+density (standardoitu normaali jakauma).
 %TODO: Is the plot here needed?
 The cdf of normal distribution 
 $$\int_{-\infty}^{x}f_X(t)dt =
@@ -682,7 +681,7 @@ standard deviation of X.
 \end{example}
 \begin{example}
 Let $U \sim Uniform(0, 10)$ and X be the sample mean
-$\frac{\sum_{i=1}^{n}u_i}{n}$ i n a sample of size n. R-script \verb#unifmean.R#
+$\frac{\sum_{i=1}^{n}u_i}{n}$ in a sample of size n. R-script \verb#unifmean.R#
 illustrates, that if $n$ is sufficiently large, then
 $$X \sim N(\frac{10}{2}, \frac{10/\sqrt{12}}{n})$$
 This is a consequence of central limit theorem.
@@ -692,15 +691,15 @@ This is a consequence of central limit theorem.
 % visualization.
 \textbf{Note} Often the parameters of a distribution are functions, not singe
 numbers. For example, the probability of success, $p$, in the Bernoulli case
-may depend on some fixed/known characteristics $x$ of sampling  unit, ie. we
-have $p(x)$ instead of the p. Or the mean of normally distributed RV may also
-depend on $x$, so we use $\mu(x)$ instead of $\mu$. Examples 1.1. and 1.2. in
+may depend on some fixed, known characteristics $x$ of the sampling  unit, ie.
+we have $p(x)$ instead of the $p$. Or, the mean of normally distributed RV may
+also depend on $x$, so we use $\mu(x)$ instead of $\mu$. Examples 1.1. and 1.2. in
 \verb#notes.pdf# demonstrate this
 \begin{example} $p(Age) = 0.1 + 0.0005*Age$
 \begin{itemize}
   \item [If] $Age = 0$, then $p(0) = 0.1$.
   \item [If] $Age = 10$, then $p(10) = 0.15$
-  \item [If] $Age = 100$, then $p(10) = 0.1 + 0.5 = 0.6$
+  \item [If] $Age = 100$, then $p(100) = 0.1 + 0.5 = 0.6$
 \end{itemize}
 Since $p(Age)$ as specified above may become negative or higher than 1 with some
 values of the parameter $Age$, function $p(x)$ should be defined so, that it
@@ -721,14 +720,14 @@ model.
   function $g(x)$ is called transformation.
   \item The probabilistic properties of Y can be expressed using those of X:
   $$P(Y \in A) = P(g(x) \in A)$$
-  \item If $g(x)$ is monotonic function in $X$, we can define the inverse
+  \item If $g(x)$ is monotonic function in $x$, we can define the inverse
   function $g^{-1}(y): \mathcal{Y} \rightarrow \mathcal{X}$ and establish the
   theorem \ref{theoremTransformations1}.
 \end{itemize}
 \begin{theorem}
 \label{theoremTransformations1}
 Let $X$ have cdf $F_X(x)$. Let $Y = g(x)$ and $\mathcal{X} = \{x, f_X(x) > 0\}$
-and $\mathcal{Y} = \{y: y=(g(x)~\text{for some } x \in \mathcal{X}\}$
+and $\mathcal{Y} = \{y: y=g(x)~\text{for some } x \in \mathcal{X}\}$
 \begin{itemize}
   \item[a)] If $g$ is an increasing function of $\mathcal{X}$, then 
   $$F_Y(y) = F_X(g^{-1}(y))\text{ for }y \in \mathcal{Y}$$
@@ -736,7 +735,7 @@ and $\mathcal{Y} = \{y: y=(g(x)~\text{for some } x \in \mathcal{X}\}$
     \item If $g(x)$ specifies $y(x)$, we solve $y(x) = y$ for $x$ to write $x$
     in terms of $y$ $x(y) = g^{-1}(y)$.
   \end{itemize}
-  \item[b)] If $g$ is decreasing function of $\mathcal{X}$ and $X$ is
+  \item[b)] If $g$ is decreasing function of $\mathcal{X}$, and $X$ is
   continuous, then 
   $$F_Y(y) = 1 - F_X(g^{-1}(y))$$
 \end{itemize}
@@ -745,15 +744,15 @@ and $\mathcal{Y} = \{y: y=(g(x)~\text{for some } x \in \mathcal{X}\}$
 Suppose $X \sim Uniform(0, 1)$. Now $F_X(x) = x,~ 0 < x < 1$. Consider
 transformation $Y=g(x) = -ln(x)$.
 \begin{itemize}
-  \item $ln(x)$ is decreasing, since $\frac{\ud }{\ud x}(-ln(x)) = -\frac{1}{x} <
-  0$ when $x > 0$
+  \item $-ln(x)$ is decreasing, since $\frac{\ud }{\ud x}(-ln(x)) = -\frac{1}{x}
+  < 0$ for $x > 0$
   $$\mathcal{X} \in (0,1) \rightarrow \mathcal{Y} \in (0, \infty)$$
 \item Because $g(x)$ is decreasing, the minimum of $Y$ will be obtained at the
 maximum value of $X$.
 $$-ln(1) = 0,~\text{(minimum of $Y$)}$$
 \item The maximum of $Y$ is obtained at the minimum of $X$.
 $$-ln(x) \rightarrow \infty,~\text{as } x \rightarrow \infty $$
-\item We can get the $g^{-1}$ by solving $x$ for $y = g(x)$
+\item We can get the $g^{-1}(y)$ by solving $x$ for $y = g(x)$
 $$y = -ln(x)~~||*(-1)$$
 $$-y = ln(x)$$
 $$x = e^{-y} = g^{-1}(y)$$
@@ -763,13 +762,13 @@ $$F_Y(y) = 1 - F_X(g^{-1}(y)) = 1 - F_X(e^{-y}) = 1 - e^{-y}$$
 $$f_Y(y) = \frac{\ud F_Y(y)}{\ud y} = \frac{\ud (1-e^{-y})}{\ud y} = -e^{-y}(-1)=e^{-y}$$
 %TODO: In notes, it was exponential pdf, but capital F is suposed to mean cdf.
 \item Note: $F_Y(y)$ is called the exponential cdf with the rate parameter 1.
-$f_Y(y)$ is the corresponding density.
+$f_Y(y)$ is the corresponding density (pdf).
 \end{itemize}
-%TODO: Two plots on page 2 of notes 5. Should they be added?
+%TODO: Two plots on page 2 of notes 6. Should they be added?
 \end{example}
-\begin{theorem} Let $X \sim f_X(x)$ and $Y=g(X)$ be a monotone transformation,
+\begin{theorem} Let $X \sim f_X(x)$ and $Y=g(x)$ be a monotone transformation,
 and supports $\mathcal{X} = \{x, f_X(x) > 0\}$
-and $\mathcal{Y} = \{y: y=(g(x)~\text{for some } x \in \mathcal{X}\}$ (like in
+and $\mathcal{Y} = \{y: y=g(x)~\text{for some } x \in \mathcal{X}\}$ (like in
 theorem \ref{theoremTransformations1}). Suppose that $f_X(x)$ is continuous on
 $\mathcal{X}$ and $g^{-1}(y)$ has continuous derivative on $\mathcal Y$.
 
@@ -777,7 +776,7 @@ The pdf of $Y$ is
 \begin{equation*} f_Y(y) =
 \left\{
 \begin{array}{ll}
-f_X(g^{-1}(y)) \vert \frac{\ud }{\ud x}g^{-1}(y) \vert & y \in \mathcal{Y} \\
+f_X(g^{-1}(y)) \vert \frac{\ud }{\ud y}g^{-1}(y) \vert & y \in \mathcal{Y} \\
 0 & otherwise
 \end{array} \right.
 \end{equation*}
@@ -793,7 +792,7 @@ We want to find a value of $X$ such that $P(X \leq x) = 0.95$. The solution is
 given by $q(x) = q(0.95) = \ldots = x_*$ %TODO: Is this correct?
 \end{example}
 \begin{example}
-Random number generator. Let $q_x(u)$  be the quartile function of $X$. If we
+Random number generator. Let $q_X(u)$  be the quartile function of $X$. If we
 are able to generate a sample from $U \sim Uniform(0,1)$ distribution,
 transformation $g(u) = q_X(u)$ provides a random sample from the distribution of $X$.
 \begin{equation*} F(x) =
@@ -805,15 +804,15 @@ transformation $g(u) = q_X(u)$ provides a random sample from the distribution of
 1 & x > 15
 \end{array}\right.
 \end{equation*}
-Then, the quartile functions for parts (*) and (**) are solved from $F(x) = u$
-by solving x. 
+Then, the quartile functions for parts $(*)$ and $(**)$ are solved from $F(x) =
+u$ by solving $x$. 
 
-Part (*)
+Part $(*)$
 $$0.1x = u$$
 $$x = 10u$$
 $$\text{ for } F(0) < u \leq F(5) \rightarrow 0 < u \leq 0.5$$
 
-Part (**)
+Part $(**)$
 $$0.25+0.05x = u$$
 $$x = 20u - 5$$
 $$\text{ for } F(5) < u \leq F(15) \rightarrow 0.5 < u \leq 1$$
@@ -822,7 +821,7 @@ Which provide us with the quartile function for $X$
 \left\{
 \begin{array}{lll}
 10u & \text{if }u \in [0, 0.5) \\
-20u-5 + 0.05x & \text{if }u \in [0.5, 1] \\
+20u-5 & \text{if }u \in [0.5, 1] \\
 \end{array} \right.
 \end{equation*}
 Quartile function $q(u)$ implemented in R-script \verb#probIntTrans.R#.
@@ -842,7 +841,7 @@ provided that sum/integral exists. If $E(g(X)) = \infty$, we say that the
 expected value does not exist.
 
 \textbf{Note} If $g(x) = x$, the above rule simplifies to
-\begin{equation*} E(g(X)) =
+\begin{equation*} E(X) =
 \left\{
 \begin{array}{ll}
 \int_{-\infty}^{\infty} xf(x) \ud x & \text{if $x$ is continuous} \\
@@ -853,10 +852,10 @@ expected value does not exist.
 \end{definition}
 \begin{example}
 Let $X \sim Exponential(\lambda)$ which has the pdf
-$$\begin{array}{ll}
-f_X(x) = \frac{1}{\lambda}e^{-\frac{x}{\lambda}} & 0 < x < \infty
-\end{array}$$
-And the expected value is
+$$\begin{array}{lll}
+f_X(x) = \frac{1}{\lambda}e^{-\frac{x}{\lambda}} & \text{where } 0 < x < \infty,
+& \lambda > 0 \end{array}$$
+The expected value is
 %TODO: There are many explanations in the original notes how different stages of
 % integration are achived, but left them out for now.
 \begin{equation*}
@@ -891,18 +890,17 @@ Let $X$ and $Y$ be random variables and $a$, $b$ and $c$ fixed constants. The
 following rules hold:
 \begin{itemize}
 \item[] $E(c) = c$
-\item[] $E(cX) = cE(X)$
+\item[] $E(cX) = cE(X)$ $(*)$
 \item[] $E(X+Y) = E(X) + E(Y)$
 \item[] $E(X+c) = E(X) + c$
 \item[] $E(XY) \neq E(X)E(Y)$
 \begin{itemize}
-  \item $E(XY)$ depends on distribution of $X$ and $Y$.
+  \item $E(XY)$ depends on the distributions of $X$ and $Y$.
 \end{itemize}
-\item[] $E(g(X)) \neq g(E(X))$
+\item[] $E(g(X)) \neq g(E(X))$, if $g$ is nonlinear function of $X$
 \begin{itemize}
-  \item If $g$ is nonlinear function of X.
-  \item Also depends on the distribution of X.
-  \item If $g$ is linear, then we get rule (*).
+  \item Also depends on the distribution of $X$.
+  \item If $g$ is linear in $x$, then we get rule $(*)$.
 \end{itemize}
 \textbf{Also}
 \item[] $E(a*g_1(X) + b*g_2(Y)+c) = a*E(g_1(X))+b*E(g_2(Y))+c$
@@ -919,7 +917,7 @@ following rules hold:
 The variance is defined as
 $$Var(X) = E\left[\left(X-E(X)\right)^2\right],\text{ and } var(X) \geq 0\text{
 always.}$$
-The square root of $Var(X)$ is called the standard deviation sd
+The square root of $Var(X)$ is called the standard deviation (or sd for short)
 $$sd(x) = \sqrt{Var(X)}$$
 \end{definition}
 \begin{example}
@@ -959,8 +957,22 @@ random variables, the variance can be approximated numerically using integrate.
 See example 1.4. in \verb#notes.pdf#. We can either use
 $$Var(X)=\int_{-\infty}^{\infty}[X-E(X)]^2f(x)\ud x$$
 or
-$$Var(X) = E(X^2)-[E(X)]^2 = \int_{-\infty}^{\infty}x2f(x)\ud x 
+$$Var(X) = E(X^2)-[E(X)]^2 = \int_{-\infty}^{\infty}x^2f(x)\ud x 
 - \left(\int_{-\infty}^{\infty}xf(x)\ud x \right )^2$$
+
+\begin{example}
+Assume $X \sim N(10, 2^2)$. Then
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+E(X^2) & = 104 \\
+(E(X))^2 &  = 100 \\
+Var(X) & = E(X^2) - (E(X))^2 = 104 - 100 = 4 \\
+sd(X) & = \sqrt{Var(X)} = \sqrt 4 = 2
+\end{array}
+\end{equation*}
+\end{example}
+
 \begin{theorem}
 Let $X$ be a random variable with a finite variance and $a$ and $b$ are finite
 constants. Then
@@ -975,23 +987,23 @@ sd(aX+b) & = \sqrt{Var(aX+b)} \\
 \end{equation*}
 \end{theorem}
 \begin{definition}
-In general, the expected value $\mu_n^{'} = E(X^n)$ is called
+In general, the expected value $\mu_n' = E(X^n)$ is called
 n\textsuperscript{th} moment of random variable $X$. The expected value $\mu_n =
 E(X -\mu)^n$ is called the n\textsuperscript{th} central moment.
 
 Expected value of $X$ is the 1\textsuperscript{st} moment and the variance of $X$ is the 2\textsuperscript{nd}
-moment of $X$. These two are called also the 1\textsuperscript{st} and
+cental moment of $X$. These two are called also the 1\textsuperscript{st} and
 2\textsuperscript{nd} order properties of the (univariate) random variable X.
   $$
   \begin{array}{ll}
-  E(X)=\mu_{1}^{´}, & Var(X) = \mu_2 = \mu_{2}^{´} - (\mu_{1}^{´})^2
+  E(X)=\mu_{1}', & Var(X) = \mu_2 = \mu_{2}'- (\mu_{1}')^2
   \end{array}
   $$
 1\textsuperscript{st} moment specifies the location of the distribution. The
 2\textsuperscript{nd} moment is related to the width of the distribution. The
 higher moments specify the shape of the distribution, eg. 3\textsuperscript{rd}
 moment is related to the skewness of the distribution, and the
-4\textsuperscript{th} on the centroids.
+4\textsuperscript{th} on the kurtosis.
 
 The moments are ``in the order of importance'': expected value is often the most
 important single number we can specify for the random variable $X$; the
@@ -1098,7 +1110,7 @@ $$f_Y(y) = \sum_{x \in \ureal}f_{X,Y}(x,y))$$
 \end{itemize}
 \begin{definition}
 A function $f(x,y)$ ($\ureal^2 \rightarrow \ureal$) is called the joint
-pdf of the continuous random variable $(X,Y)$, if for every $A \in \ureal^2$
+pdf of the continuous random variables $(X,Y)$, if for every $A \in \ureal^2$
 we have
 $$P((X,Y) \in A) = \iint_{A}f(x,y)\ud x \ud y$$ %TODO: Better way to mark
 % integral lower part for dual integral?
@@ -1112,11 +1124,11 @@ $$E(g(X,Y)) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}g(x,y)f(x,y) \ud x
  \renewcommand{\arraystretch}{1.6}
  \begin{array}{ll}
  f_X(x) = \int_{-\infty}^{\infty}f(x,y) \ud y & -\infty < x < \infty \\
- f_Y(y) = \int_{-\infty}^{\infty}f(x,y) \ud x & -\infty < x < \infty
+ f_Y(y) = \int_{-\infty}^{\infty}f(x,y) \ud x & -\infty < y < \infty
  \end{array}
  \end{equation*}
  Any function satisfying rules a) and b) bellow is a joint pdf for some random
- variable $(X,Y)$.
+ variables $(X,Y)$.
  \begin{itemize}
    \item[a)] $f(x,y) \geq 0$ for all $x,y \in \ureal^2$
    \item[b)] $\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x,y) \ud x
@@ -1136,13 +1148,14 @@ Define a joint pdf by
 Is this a valid pdf?
  \begin{itemize}
    \item[a)] $f(x,y) = 6xy^2 \geq 0$ for all $x,y \in \ureal^2$
-   \item[b)] Is the volume under the curve 1?
+   \item[b)] Is the volume under the curve =1?
    \begin{equation*}
    \renewcommand{\arraystretch}{1.6}
    \begin{array}{ll}
    \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x,y) \ud x \ud y & =
    \int_{0}^{1}\int_{0}^{1}f(x,y) \ud x \ud y \\
    & = \int_{0}^{1}\int_{0}^{1}6xy^2 \ud x \ud y \\
+   & = \int_{0}^{1}\big|_{0}^{1}3x^2y^2 \ud y \\
    & = \int_{0}^{1}3y^2 \ud y \\
    & = \big|_{0}^{1}~ 3*\frac{1}{3}y^3 \\
    & = \big|_{0}^{1}~ y^3 \\
@@ -1197,7 +1210,7 @@ P(\frac{1}{2} < x < \frac{3}{4}) &=\int_{\frac{1}{2}}^{\frac{3}{4}}f_X(x) \ud x\
  \ud t $$
  $$\frac{\ud F(x,y)}{\ud x \ud y} = f(x,y)$$
 \end{itemize}
-\chapter{Conditional distributions}
+\section{Conditional distributions}
 \begin{itemize}
   \item Often two random variables are related.
   \item E.g. $X =$ height and $Y$ is the weight of a person.
@@ -1235,14 +1248,14 @@ See example 1.24. in \verb#notes.pdf#. %TODO: Should the actual example be here?
   \item The extension to continuous random variables is given next.
 \end{itemize}
 \begin{definition}
-Let $(X,Y)$ be a continuous random variable with joint pdf $f(x,y)$ and marginal
-pdf's $f_X(x)$ and $f_Y(y)$. For any $x$ such that $f_X(x)>0$, the conditional
+Let $(X,Y)$ be a continuous random variables with joint pdf $f(x,y)$ and
+marginal pdf's $f_X(x)$ and $f_Y(y)$. For any $x$ such that $f_X(x)>0$, the conditional
 pdf of $Y$ given that $X=x$ is the function of $y$ denoted by $f(y \mid x)$ and
 defined by
 $$f(y \mid x) = \frac{f(x,y)}{f_X(x)}$$
 %TODO: Is the \frac{P(X=x, Y=Y)}{P(X=x)} part needed? In notes 9 page 3.
-For any $y$ such that $f_Y(y) > 0$, the conditional pdf that $Y=y$ is
-$$f(x \mid y) = \frac{f(x,y)}{f_Y(y)}$$
+For any $y$ such that $f_Y(y) > 0$, the conditional pdf of $X$ given that
+$Y=y$ is $$f(x \mid y) = \frac{f(x,y)}{f_Y(y)}$$
 Computing $\int_{-\infty}^{\infty}f(y \mid x) \ud y$, which will be 1, justifies
 that $f(y \mid x)$ is a pdf.
 \end{definition}
@@ -1345,7 +1358,7 @@ that $X=1$ % TODO: or $X \leq 1$?
 	\renewcommand{\arraystretch}{1.6}
 	\begin{array}{ll}
 	Var(Y \mid X=1) & = E(Y^2 \mid X=1) - \left[E(Y \mid X=1)\right]^2 \\
-	& = \frac{3}{5} - \left(\frac{3}{5}\right)^2 \approx 0.0375
+	& = \frac{3}{5} - \left(\frac{3}{4}\right)^2 \approx 0.0375
 	\end{array}
   \end{equation*}
   
@@ -1369,7 +1382,7 @@ Let $(X,Y)$ be a bivariate random variable with joint pdf or pmf $f(x,y)$, and
 marginal pmf's/pdf's $f_X(x)$ and $f_Y(y)$.
 
 $X$ and $Y$ are said to be independent (riippumattomia) random variables if for
-every $x \in \mathcal{X}$ and $y \in \mathcal{Y}$
+every $x \in \ureal$ and $y \in \ureal$
 $$f(x,y) = f_X(x)f_Y(y)$$
 If $X$ and $Y$ are independent, it follows that
 \begin{equation*}
@@ -1395,7 +1408,7 @@ regardless of the value of $x$.
   $X$ and $Y$ are not independent %TODO: Do we need the illustrations to this make
   % sense?
   \item For independent random variables, the knowledge of the realized value of
-  $X$ does not provide any information on $Y$, compared to the situation where
+  $X$ does not provide any information on $Y$ compared to the situation where
   the value of $X$ is not known.
 \end{itemize}
 \begin{example}
@@ -1412,7 +1425,7 @@ f(20,3) = \frac{3}{10}
 \end{array}
 \end{equation*}
 %TODO: Better aligment for the table?
-\begin{table}[h]
+\begin{table}[b]
 \caption{Probabilities for bivariate pmf $f(x,y)$ of example
 \ref{exampleCheckIndependence1}}
 \label{exampleCheckIndependence1Table1}
@@ -1428,7 +1441,7 @@ $\frac{5}{10} = \frac{1}{2}$ \\
 && $\frac{2}{10}$ & $\frac{3}{10}$ & $\frac{5}{10}$
 \end{tabular}
 \end{table}
-Conditional and marginal probabilities can be seen on table
+Joint and marginal probabilities can be seen on table
 \ref{exampleCheckIndependence1Table1}. Consider events $A:~X=10$ and $B:~Y=1$.
 $$P(A \cap B) = \frac{1}{10}$$
 $$P(A)P(B) = \frac{5}{10}*\frac{2}{10} = \frac{1}{10}$$
@@ -1457,7 +1470,7 @@ Let $X$ and $Y$ be independent random variables.
 \section{Covariance and correlation}
 \begin{itemize}
   \item Measures the strength of the relationship between $X$ and $Y$.
-  Especially, they measure the linear relationship between the two random
+  Especially, they measure the linear association between the two random
   variables.
 \end{itemize}
 \textbf{Notations}
@@ -1513,13 +1526,14 @@ fixed}\\
 =E(XY)-\mu_X \mu_Y
 \end{array}
 \end{equation*}
+
 \textbf{Note} If $\mu_X=0$ or $\mu_Y=0$, then $cov(X,Y) = E(XY)$
 
 \textbf{Note} The covariance of random variable with itself is
 \begin{equation*}
 \renewcommand{\arraystretch}{1.6}
 \begin{array}{ll}
-cov(X,Y) &=E(XX)-E(X)E(X) \\
+cov(X,X) &=E(XX)-E(X)E(X) \\
 &=E(X^2)-(E(X))^2 = Var(X)
 \end{array}
 \end{equation*}
@@ -1639,6 +1653,7 @@ common, constant variance)
 $$= \frac{1}{n^2} n\sigma^2 = \frac{\sigma^2}{n}$$
 $$sd(Y) = \sqrt{Var(Y)} = \frac{\sigma}{\sqrt{n}}$$
 The well known standard error of the mean of an independent sample.
+
 \textbf{Note} If $X_i$ are independent and identically distributed (i.i.d) and
 $X_i \sim Uniform(l, u)$, we have $Var(X_i) = \frac{1}{12}(u-l)^2$ and 
 $$Var(Y) = \frac{1}{n} Var(X_i) = \frac{1}{n} \frac{1}{12}(u-l)^2 =
@@ -1657,6 +1672,7 @@ sd(Y) & = \frac{10}{\sqrt{12n}}
 \begin{example}
 \label{exampleSpatialData1}
 Spatial data
+
 Let random variables $X_1$,  $X_2$ and $X_3$ be observed at fixed locations
 $u_1$, $u_2$ and $u_3$:
 \begin{equation*}
@@ -1671,7 +1687,7 @@ u_3 = (2,0)
 
 Assume that the correlation among $X_i$ is specified by the exponential spatial
 correlation
-$$\rho_{X_i,X_j} = e^{\frac{-S_{ij}}{d}}$$
+$$\rho_{X_iX_j} = e^{\frac{-S_{ij}}{d}}$$
 where $s_{ij}$ is the spatial distance between locations $u_i$ and $u_j$, and
 $d$ specifies the strength of the spatial correlation. Assume that $d$ is
 known to be $d=2$. Then, the correlations for all the pairs can be seen in the
@@ -1703,7 +1719,7 @@ Var(Y) & = \frac{1}{n^2}Var(X_1+X_2+X_3) \\
 & = \frac{1}{n^2}\left[Var(X_1)+Var(X_2) + 2cov(X_1,X_2) + Var(X_3) +
 2cov(X_1,X_3)+2cov(X_2,X_3)\right] \\
 &=\frac{1}{n^2}\left[\underbrace{\sum Var(X_i))}_{3\sigma^2} + 2 \sum_{i<j}
-\underbrace{cov(X_i, X_j)}_{\sigma\sigma\rho_{X_i,X_j}}\right] \\
+\underbrace{cov(X_i, X_j)}_{\sigma\sigma\rho_{X_iX_j}}\right] \\
 & =
 \frac{1}{3^2}*3\sigma^2+\frac{2\sigma^2}{3^2}(cor(X_1,X_2)+cor(X_1,X_3)+cor(X_2,X_3))\\
 &=\sigma^2(\frac{1}{3}+\frac{2}{9}*1.30) = \underbrace{0.62}_{<1}\sigma^2
@@ -1716,7 +1732,7 @@ $$Var(Y) = \frac{1}{2}\sigma^2 = 0.5\sigma^2$$
 \end{example}
 \section{Bivariate normal distribution}
 \begin{itemize}
-  \item If we have dependent data of size $n$, we cannot thik it as $n$
+  \item If we have dependent data of size $n$, we cannot think it as $n$
   (independent) replicates of a random variable $X$, but as a single replicate
   of a $n$-variate random vector.
   \begin{itemize}
@@ -1726,6 +1742,8 @@ $$Var(Y) = \frac{1}{2}\sigma^2 = 0.5\sigma^2$$
     \end{itemize}
   \item The most commonly used $n$-variate distribution is multivariate normal
   distribution.
+  \item To understand its properties, we first take a look into bivariate
+  normal distribution.
   % \item To understand its properties, we spend this lecture with the bivariate
   % normal distribution. 
   % TODO: Is the commented out item needed?
@@ -1771,25 +1789,25 @@ $E(Y)$, and the conditional variance of $Y \mid x$ is equal to $Var(Y \mid x)$.
   normals, the marginal distributions are therefore the same as the conditional
   ones, meaning the two random variables are independent.
   \item The equation looks complex, but it can be presented nicely in matrix
-  form that covers implicitly the extension to multivariate form. %TODO: Is this
+  form that covers implicitly the extension to multivariate case. %TODO: Is this
   % correct?
-  \item Also called multivariate Gaussian density.
+  \item Also called bivariate Gaussian density.
   \item Basis for the wide class of statistical models and limiting distribution
   of parameter estimates in many cases as the sample size increases.
   \begin{itemize}
-    \item Normality of $e_i$ in the linear refression model $y_i = \beta_0 +
+    \item Normality of $e_i$ in the linear regression model $y_i = \beta_0 +
     \beta_1 x_i + e_i$ leads to bivariate normality of $\hat{\beta_0}$ and
     $\hat{\beta_1}$ in small samples.
     \item Asymptotic distribution of $(\hat{\beta_0},\hat{\beta_1})$ in the
-    linear regression regarless of the distribtuion of $e_i$, as the sample size
-    $\rightarrow \infty$. The convergence is quite fast, if the distribution of
+    linear regression regardless of the distribution of $e_i$, as the sample
+    size $\rightarrow \infty$. The convergence is quite fast, if the distribution of
     $e_i$ is not too different from the normal distribution, and the variance
     $Var(e_i)$ is constant over the range of $x$.
     \item It is a limit distribution (as $n \rightarrow \infty$) of parameter
     estimates in a wide class of statistical models: multiple linear regression,
     generalized linear models, mixed-effect models ect. In general, all models
     where parameters are estimated using maximum likelihood.
-    \item Starting assumption in Factor analysis, and model based geostatistics,
+    \item Starting assumption in factor analysis, and model based geostatistics,
     Gaussian mixture models, model-based time-series analysis ect.
   \end{itemize}
   \item The bivariate normal density is an intermediate step to the more general
@@ -1814,8 +1832,8 @@ $E(Y)$, and the conditional variance of $Y \mid x$ is equal to $Var(Y \mid x)$.
 	Var(aX+bY) = a^2 Var(X) + b^2 Var(Y) + 2abcov(X,Y)
 	\end{array}
 	\end{equation*}
-	for $X$ and $Y$ regardless of their distribution, meaning it also holds
-  for the normally distributed ones.
+	for $X$ and $Y$ regardless of their joint distribution, meaning it also holds
+  for the normal case.
   \end{itemize}
   \item The conditional distributions of $X \mid y$ and $Y \mid x$ are also
   normal. The expected value and variance
@@ -1945,11 +1963,11 @@ y_1 \\ y_2 \\ y_3 \\ \vdots \\ y_n
 \end{bmatrix}_{n \times 1} = 
  
 \begin{bmatrix}
-1*\beta_0+x_1\beta_1+e_1 \\ 1*\beta_0+x_2\beta_1+e_2 \\ 1*\beta_0+x_3\beta_1+e_3
+\beta_0+x_1\beta_1+e_1 \\ \beta_0+x_2\beta_1+e_2 \\ \beta_0+x_3\beta_1+e_3
 \\
 \vdots
 \\
-1*\beta_0+x_n\beta_1+e_n
+\beta_0+x_n\beta_1+e_n
 \end{bmatrix}_{n \times 1}
 
 
@@ -2052,7 +2070,7 @@ covariance between them is $p \times q$ matrix (not a square matrix unless $p
 \renewcommand{\arraystretch}{1.6}
 \begin{array}{l}
 
-cov(\bm x, \bm y)_{p \times q} = 
+cov(\bm x, \bm y')_{p \times q} = 
 \begin{bmatrix}
 cov(X_1, Y_1) & cov(X_1, Y_2) & \hdots & cov(X_1, Y_q) \\
 cov(X_2, Y_1) & cov(X_2, Y_2) & \hdots & cov(X_2, Y_q) \\
@@ -2097,7 +2115,7 @@ E(\bm x) =
 \mu \\ \mu \\ \mu
 \end{bmatrix} &
 
-Var(\bm x) = \sigma^2
+Var(\bm x)_{3 \times 3} = \sigma^2
 
 \begin{bmatrix}
 1 & 0.61 & 0.3 \\
@@ -2137,8 +2155,8 @@ $$Var(\bm e) = Var(\bm y) = \sigma^2 \bm I_{n \times n} =
 0 & 0 & \hdots & \sigma^2 
 \end{bmatrix}
 $$
-meaning all components of $\bm e$ a common variance $\sigma^2$ and $cov(e_i,
-e_j) = 0$ for all $i,j$ where $i \neq j$.
+meaning all components of $\bm e$ have a common variance $\sigma^2$ and
+$cov(e_i, e_j) = 0$ for all $i,j$ where $i \neq j$.
 Given the realized values of $\bm y$, and the known values of $\bm X$, the
 unknown values of parameters $\bm \beta$ can estimated by minimizing the sum of
 squared residual errors $\bm e' \bm e = \sum e_i^2$ with respect to $\bm \beta$
@@ -2201,8 +2219,8 @@ summing or integrating $f(\bm x)$ over all other elements of $\bm x$.
  $$ f(x_1,\ldots, x_k)= \int_{-\infty}^{\infty} \ldots
 \int_{-\infty}^{\infty} f(x_1, x_2, \ldots , x_n) \ud x_{k+1} \ldots \ud x_n$$
 or
- $$ f(x_1,\ldots, x_k)= \sum_{x_{k+1},\ldots,x_n \in \ureal^{n-k}} f(x_1, x_2,
- \ldots , x_n)$$
+ $$ f(x_1,\ldots, x_k)= \sum_{x_{k+1},\ldots,x_n \in \ureal^{n-k}}
+ \underbrace{f(x_1, x_2, \ldots , x_n)}_{f(\bm x)}$$
  \item The conditional pdf/pmf of $x_{k+1},\ldots,x_n$ conditional on
  $x_1,\ldots,x_k$ is
  $$f(x_{k+1},\ldots,x_n \mid x_1,\ldots,x_k) =
@@ -2215,14 +2233,14 @@ multivariate normal distribution, if the density is
 $$f(\bm x \mid \bm \mu, \bm \Sigma) = \frac{1}{\sqrt{(2\pi)^n}} |\bm
 \Sigma|^{-\frac{1}{2}}e^{-\frac{1}{2}(\bm x - \bm \mu)'\bm \Sigma^{-1}(\bm x -
 \bm \mu)}$$
-where $\bm \mu = \left[ E(\bm x)\right]_{n \times 1}$ and $\bm \Sigma \left[
+where $\bm \mu = \left[ E(\bm x)\right]_{n \times 1}$ and $\bm \Sigma = \left[
 Var(\bm x)\right]_{n \times n}$
 
 \item If the parameters $\bm \mu$ and $\bm \Sigma$ were written using scalar
 notations, they would include
 \begin{itemize}
   \item $n$ expected values, one for each element of $\bm x$ (in $\bm \mu$).
-  \item $n$ variances (from the diagonal of $\bm \Sigma$), one for each elements
+  \item $n$ variances (from the diagonal of $\bm \Sigma$), one for each element
   of $\bm x$.
   \item $(n-1)+(n-2)+\ldots+1 = \frac{n(n-1)}{2}$ covariances, one for each pair
   $(x_i, x_j)$
