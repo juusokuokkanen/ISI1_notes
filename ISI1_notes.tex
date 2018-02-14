@@ -1869,6 +1869,7 @@ not include $x$, meaning it's constant over the range of $x$
 %TODO: If stuff from notes 14 pages 4-6 needed, add here
 \chapter{Matrix and vector notations in statistics}
 \begin{example}
+\label{exampleRegression1}
 Single predictor regression
 
 Consider model
@@ -2063,6 +2064,7 @@ cov(X_p, X_1) & cov(X_p, X_2) & \hdots & cov(X_n, X_q) \\
 \end{equation*}
 
 \begin{example}
+\label{exampleSpatialData2}
 Recall example \ref{exampleSpatialData1} on spatial data at 3 locations:
 $(1,0)$, $(0,0)$ and $(0,2)$, and $\rho_{X_iX_j}=e^\frac{-s_{ij}}{2}$
 
@@ -2120,6 +2122,51 @@ $$cov(X_i, X_j) = \rho_{X_i X_j} \underbrace{sd(X_i)}_\sigma
 %TODO: If stuff from notes 15 page 7 needed, add here. Also, add then the
 % notes 16 page 1 example (since notes 15 page 7 speaks about OLs estimation,
 % and there is example about it in notes 16 page 1)
+
+%TODO: Should the thing bellow be a definition or example?
+\begin{example} Ordinary least squares (OLS) estimators
+
+Recall the example \ref{exampleRegression1} about single predictor regression.
+$$\bm y = \bm X \bm \beta + \bm e$$
+If we assume that 
+$$Var(\bm e) = Var(\bm y) = \sigma^2 \bm I_{n \times n} = 
+\begin{bmatrix}
+\sigma^2 & 0 & \hdots & 0 \\
+0 & \sigma^2 & \hdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \hdots & \sigma^2 
+\end{bmatrix}
+$$
+meaning all components of $\bm e$ a common variance $\sigma^2$ and $cov(e_i,
+e_j) = 0$ for all $i,j$ where $i \neq j$.
+Given the realized values of $\bm y$, and the known values of $\bm X$, the
+unknown values of parameters $\bm \beta$ can estimated by minimizing the sum of
+squared residual errors $\bm e' \bm e = \sum e_i^2$ with respect to $\bm \beta$
+to get ordinary least squares (OLS) estimator (PNS, pienimmän neliösumman
+estimaattori).
+$$\widehat{\bm \beta_{OLS}} = (\bm X' \bm X)^{-1} \bm X' \bm y$$
+Estimator has the variance $Var\left(\widehat{\bm \beta_{OLS}}\right) =
+\sigma^2(\bm X' \bm X)^{-1}$
+
+\end{example}
+
+% TODO: Added only the reference to the script, since hard to explain otherwise.
+% Is it enough? There were some plots and such in notes 16 page 1.
+
+\begin{example} See example about OLS in R-script \verb#ols.R#
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{lll}
+\text{Observations} & \bm x' = \begin{bmatrix}1 & 2 & \hdots  &
+10\end{bmatrix}
+\\
+\text{and true  model is} & y_i = \beta_0 + \beta_1 x_i + e_i = 5+10*x_i+e_i &
+\text{where } e_i \sim N(0, 10^2)
+\end{array}
+\end{equation*}
+
+\end{example}
 
 \chapter{Multivariate distributions}
 \begin{itemize}
@@ -2255,5 +2302,111 @@ Var(\bm x_1 \mid \bm x_2) = \bm \Sigma_{1} - \bm \Sigma_{12} \bm \Sigma_{2}^{-1}
 \end{array}
 \end{equation*}
 \end{itemize}
+\begin{example}
+Recall example \ref{exampleSpatialData2} on spatial data at 3 locations:
+$u_1=(1,0)$, $u_2=(0,0)$ and $u_3=(0,2)$, and
+$\rho_{X_iX_j}=e^\frac{-s_{ij}}{2}$.
+
+Consider additional random variables $X_4$ and $X_5$ at locations $u_4 = (1,2)$
+and  $u_5 = (3,1)$.
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{c}
+
+\bm x = 
+\begin{bmatrix}
+X_1 \\ X_2 \\ X_3 \\ X_4 \\ X_5
+\end{bmatrix}
+
+\end{array}
+\end{equation*}
+ %TODO: Plot about locations and values of random variables at notes 16 page 5.
+ % Is is needed?
+
+Lets assume that
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+E(X_i) = 10 & \text{for all } i \\
+Var(X_i) = \sigma^2 = 5 & \text{for all } i \\
+\text{then} \\
+Cov(X_i, X_j) = \sigma^2 e^\frac{-s_{ij}}{2} = 5*e^\frac{-s_{ij}}{2}
+\end{array}
+\end{equation*}
+
+If we have following partitions
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{lll}
+\bm y = 
+\begin{bmatrix}
+X_1 \\ X_2 \\ X_3
+\end{bmatrix} &
+\bm z = 
+\begin{bmatrix}
+X_4 \\ X_5
+\end{bmatrix} &
+\bm x = 
+\begin{bmatrix}
+\bm y \\ \bm z
+\end{bmatrix}
+\end{array}
+\end{equation*}
+
+and $\bm z$ has been observed to be
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{lll}
+\bm z = 
+\begin{bmatrix}
+X_4 \\ X_5
+\end{bmatrix} = 
+\begin{bmatrix}
+9 \\ 13
+\end{bmatrix}
+\end{array}
+\end{equation*}
+
+Variance-covariance matrix of $\bm x$ would be formed as
+
+$$
+Var(\bm x) = 
+\begin{bmatrix}
+Var(\bm y) & \bm cov(\bm y, \bm z') \\
+cov(\bm z, \bm y') & Var(\bm z) \\
+\end{bmatrix} =
+\begin{bmatrix}
+\bm \Sigma_1 & \bm \Sigma_{12} \\
+\bm \Sigma_{21} & \bm \Sigma_2 \\
+\end{bmatrix}
+$$
+
+Then, we could calculate the conditional expected value and variance for $\bm y$
+with condition $\bm z$ as (see R-script \verb#MVNormalMean.R# to calculate the
+values)
+
+\begin{equation*}
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{ll}
+E(\bm y \mid \bm z) & = E(\bm y) + cov(\bm y, \bm z')\left[Var(\bm
+z)\right]^{-1}\left[\bm z - E(\bm z)\right] \\
+& = \ldots = 
+\begin{bmatrix}
+10.4 \\ 10.0 \\ 9.4
+\end{bmatrix} \\
+Var(\bm y \mid \bm z) & = Var(\bm y) + cov(\bm y, \bm z')\left[Var(\bm
+z)\right]^{-1}cov(\bm z, \bm y') \\
+ & = \ldots = 
+\begin{bmatrix}
+4.1 & 2.3 & 0.5 \\
+2.3 & 4.4 & 0.8 \\
+0.5 & 0.8 & 3.16
+\end{bmatrix}
+\end{array}
+\end{equation*}
+
+\end{example}
 %TODO: Add the last example from page 5 of notes 16.
 \end{document}
